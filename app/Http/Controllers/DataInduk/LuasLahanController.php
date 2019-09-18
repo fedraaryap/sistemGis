@@ -5,6 +5,7 @@ namespace App\Http\Controllers\DataInduk;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\DataInduk\LuasLahan;
+use App\Model\Referensi\KeteranganLahan;
 
 class LuasLahanController extends Controller
 {
@@ -17,7 +18,7 @@ class LuasLahanController extends Controller
 
     public function create()
     {
-        $KetLahan = LuasLahan::all();
+        $KetLahan = KeteranganLahan::all();
         return view('DataInduk.luaslahan.create',compact('KetLahan'));
     }
 
@@ -25,6 +26,7 @@ class LuasLahanController extends Controller
     public function store(Request $request)
     {
         $data = new LuasLahan;
+        $data->id_desa =$request->id_desa;
         $data->id_ket_lahan = $request->id_ket_lahan;
         $data->pemilik_lahan = $request->pemilik_lahan;
         $data->luas_lahan = $request->luas_lahan;
@@ -36,7 +38,7 @@ class LuasLahanController extends Controller
     public function edit($id)
     {
          $data = LuasLahan::findorfail($id);
-         $KetLahan =KualitasUdara::all();
+         $KetLahan =KeteranganLahan::all();
         return view('DataInduk.luaslahan.edit',compact('data','KetLahan'));
     }
 
@@ -44,6 +46,7 @@ class LuasLahanController extends Controller
     public function update(Request $request, $id)
     {
         $data = LuasLahan::findorfail($id);
+        $data->id_desa =$request->id_desa;
         $data->id_ket_lahan = $request->id_ket_lahan;
         $data->pemilik_lahan = $request->pemilik_lahan;
         $data->luas_lahan = $request->luas_lahan;

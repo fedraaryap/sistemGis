@@ -32,6 +32,7 @@
           
             <tr>
                 <th>No</th>
+                <th>Desa</th>
                 <th>Sumber</th>
                 <th>Jumlah Lokasi</th>
                 <th>Polutan</th>
@@ -45,6 +46,7 @@
 
   <tr>
   <td>{{$nomor+1}}</td>
+  <td>{{(!is_null($dat->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
   <td>{{$dat->SumberKualitas->sumber}}</td>
   <td>{{$dat->jumlah_lokasi_pencemaran}}</td>
   <td>{{$dat->politan_pencemaran}}</td>

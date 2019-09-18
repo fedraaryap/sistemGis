@@ -32,6 +32,7 @@
           
             <tr>
                 <th>No</th>
+                <th>Desa</th>
                 <th>Sumber Air</th>
                 <th>Status Sumber</th>
                 <th>aksi</th>
@@ -42,8 +43,9 @@
 
   <tr>
   <td>{{$nomor+1}}</td>
+  <td>{{(!is_null($dat->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
   <td>{{$dat->SumberAir->sumber_air}}</td>
-  <td>{{$dat->status_sumber}}</td>
+  <td>{{(!is_null($dat->status_sumber)?$dat->status_sumber:'-')}}</td>
 
   
   <td>

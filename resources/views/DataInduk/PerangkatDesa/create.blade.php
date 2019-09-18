@@ -29,18 +29,18 @@ $TahunAktif = [0=>'tidak',1=>'iya'
 
             <!-- /.box-header -->
             <!-- form start -->
-          <form role="form" method="post" action="{{route('mekpemsda.simpan')}}">
+          <form role="form" method="post" action="{{route('perangkat.simpan')}}">
               {{ csrf_field() }}
               <div class="box-body">
                 <div class="form-group">
                   <label for="kepala_desa">Kepala Desa</label>
                   <input type="text" class="form-control" name="kepala_desa" id="kepala_desa" placeholder="masukan data">
                    <label for="tahun_dimulai">Tahun Dimulai</label>
-                  <input type="text" class="form-control" name="tahun_dimulai" id="tahun_dimulai" placeholder="masukan data">
+                  <input type="date" class="form-control" name="tahun_dimulai" id="tahun_dimulai" placeholder="masukan data">
                  <label for="tahun_berakhir">Tahun Berakhir</label>
-                  <input type="number" class="form-control" name="tahun_berakhir" id="tahun_berakhir" placeholder="masukan data">
+                  <input type="date" class="form-control" name="tahun_berakhir" id="tahun_berakhir" placeholder="masukan data">
                     <label for="periode">Periode</label>
-                  <input type="text" class="form-control" name="periode" id="periode" placeholder="masukan data">
+                  <input type="number" class="form-control" name="periode" id="periode" placeholder="masukan data">
 
                   <label for="a_tahun_aktif">Apakah Aktif</label>
                   <select class="form-control" name="a_tahun_aktif">
@@ -51,7 +51,7 @@ $TahunAktif = [0=>'tidak',1=>'iya'
                 </select>
 
                  <label for="tahun_aktif">Tahun Aktif</label>
-                  <input type="text" class="form-control" name="tahun_aktif" id="tahun_aktif" placeholder="masukan data">
+                  <input type="number" class="form-control" name="tahun_aktif" id="tahun_aktif" placeholder="masukan data">
 
            
 

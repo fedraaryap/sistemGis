@@ -14,4 +14,9 @@ class StatusSaranaTransportasi extends Model
 	{
 	return $this->belongsTo('App\Model\Referensi\SaranaTransportasi','id_sarana_transportasi','id_sarana_transportasi');
 	}
+
+	public function Desa()
+	{
+		return $this->belongsTo('App\Model\DaftarDesa\ProfilDesa','id_desa','id_desa');
+	}
 }

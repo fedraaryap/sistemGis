@@ -20,4 +20,8 @@ class LuasWilayah extends Model
 	{
 		return $this->belongsTo('App\Model\Referensi\Satuan','id_satuan','id_satuan');
 	}
+	public function Desa()
+	{
+		return $this->belongsTo('App\Model\DaftarDesa\ProfilDesa','id_desa','id_desa');
+	}
 }

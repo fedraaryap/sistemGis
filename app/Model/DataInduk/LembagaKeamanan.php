@@ -15,4 +15,9 @@ class LembagaKeamanan extends Model
 	{
 		return $this->belongsTo('App\Model\Referensi\JenisKeamanan','id_jenis_keamanan','id_jenis_keamanan');
 	}
+
+		public function Desa()
+	{
+		return $this->belongsTo('App\Model\DaftarDesa\ProfilDesa','id_desa','id_desa');
+	}
 }

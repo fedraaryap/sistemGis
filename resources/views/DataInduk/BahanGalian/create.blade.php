@@ -1,10 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('content')
-<?php
-$Kepemilikan = [
-1=>'Pemerintah',2=>'Swasta',3=>'Perorangan'];
-?>
+
 
 
 
@@ -32,11 +29,19 @@ $Kepemilikan = [
               {{ csrf_field() }}
               <div class="box-body">
                 <div class="form-group">
+                    <label for="id_desa">Desa</label>
+                  <select class="form-control" name="id_desa">
+                    <option value="" selected disabled></option>
+                  @foreach($desa AS $desa =>$des )
+                    <option value="{{ $des->id_desa }}">{{ $des->nama_wil }}</option>
+                  @endforeach
+                </select>
+
                <label for="id_status_kepemilikan">Status Kepemilikan</label>
                   <select class="form-control" name="id_status_kepemilikan">
                     <option value="" selected disabled></option>
-                  @foreach($Kepemilikan AS $Kepemilikan =>$kep )
-                    <option value="{{ $Kepemilikan }}">{{ $kep }}</option>
+                  @foreach($kepemilikan AS $kepe =>$kep )
+                    <option value="{{ $kep->id_status_kepemilikan }}">{{ $kep->kepemilikan }}</option>
                   @endforeach
                 </select>
 

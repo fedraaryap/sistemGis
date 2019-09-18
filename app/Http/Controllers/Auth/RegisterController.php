@@ -25,13 +25,13 @@ class RegisterController extends Controller
         ];
         //dd($request->all());
         User::create($array);
-        return redirect()->back();
+        return redirect()->route('login');
     }
 
     public function logout()
     {
         \Auth::logout();
-
+//
         return redirect()->route('login');
     }
 

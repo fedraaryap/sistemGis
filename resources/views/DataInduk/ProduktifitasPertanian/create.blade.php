@@ -2,9 +2,8 @@
 
 @section('content')
 <?php
-$Produktifitas = [
-];
 
+$desa = [1=>'Totoharjo',2=>'Hata',3=>'bakauhani',4=>'kelawi',5=>'semanak'];
 ?>
 
 
@@ -33,11 +32,18 @@ $Produktifitas = [
               {{ csrf_field() }}
               <div class="box-body">
                 <div class="form-group">
+                  <label for="id_desa">Desa</label>
+                    <select class="form-control" name="id_desa">
+                      <option value="" selected disabled></option>
+                        @foreach($desa AS $desa =>$des )
+                    <option value="{{ $desa }}">{{ $des }}</option>
+                        @endforeach
+                </select>
                  <label for="id_jenis_produktifitas">Jenis Produktifitas</label>
                   <select class="form-control" name="id_jenis_produktifitas">
                     <option value="" selected disabled></option>
-                  @foreach($Produktifitas AS $Produktifitas =>$produk )
-                    <option value="{{ $Produktifitas }}">{{ $produk }}</option>
+                  @foreach($Produktifitas AS $Produktifitas =>$pro )
+                    <option value="{{ $pro->id_jenis_produktifitas }}">{{ $pro->jenis_produktifitas }}</option>
                   @endforeach
                 </select>
                  
@@ -47,8 +53,8 @@ $Produktifitas = [
                   <input type="number" class="form-control" name="luas" id="luas" placeholder="masukan data">
                   <label for="hasil">Hasil</label>
                   <input type="number" class="form-control" name="hasil" id="hasil" placeholder="masukan data">
-                  <label for="kepemilika_pertanian">Kepemilikan Pertanian</label>
-                  <input type="number" class="form-control" name="kepemilika_pertanian" id="kepemilika_pertanian" placeholder="masukan data">
+                  <label for="kepemilikan_pertanian">Kepemilikan Pertanian</label>
+                  <input type="text" class="form-control" name="kepemilikan_pertanian" id="kepemilikan_pertanian" placeholder="masukan data">
 
                
                  

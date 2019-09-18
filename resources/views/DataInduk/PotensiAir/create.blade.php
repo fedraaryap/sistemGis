@@ -2,8 +2,10 @@
 
 @section('content')
 <?php
-$Status = [
+$Status = [0=>'tidak ada',1=>'ada'
 ];
+$desa = [1=>'Totoharjo',2=>'Hata',3=>'bakauhani',4=>'kelawi',5=>'semanak'];
+
 
 ?>
 
@@ -33,11 +35,20 @@ $Status = [
               {{ csrf_field() }}
               <div class="box-body">
                 <div class="form-group">
-                   <label for="jenis_potensi_air">Jenis Potensi Air</label>
-                  <input type="number" class="form-control" name="jenis_potensi_air" id="jenis_potensi_air" placeholder="masukan data">
+                    <label for="id_desa">Desa</label>
+                  <select class="form-control" name="id_desa">
+                    <option value="" selected disabled></option>
+                  @foreach($desa AS $desa =>$des )
+                    <option value="{{ $desa }}">{{ $des }}</option>
+                  @endforeach
+                </select>
 
-                    <label for="id_jenis_ternak">Status</label>
-                  <select class="form-control" name="id_jenis_ternak">
+                  
+                   <label for="jenis_potensi_air">Jenis Potensi Air</label>
+                  <input type="text" class="form-control" name="jenis_potensi_air" id="jenis_potensi_air" placeholder="masukan data">
+
+                    <label for="status_potensi_air">Status</label>
+                  <select class="form-control" name="status_potensi_air">
                     <option value="" selected disabled></option>
                   @foreach($Status AS $Status =>$stat )
                     <option value="{{ $Status }}">{{ $stat }}</option>

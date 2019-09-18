@@ -32,6 +32,7 @@
           
             <tr>
                 <th>No</th>
+                <th>Desa</th>
                 <th>Jenis Sarana Transportasi</th>
                 <th>keberadaan</th>
                 <th>Jumlah</th>
@@ -43,9 +44,10 @@
 
   <tr>
   <td>{{$nomor+1}}</td>
+  <td>{{(!is_null($dat->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
   <td>{{$dat->Saranatransportasi->jenis_sarana_transportasi}}</td>
-  <td>{{$dat->keberadaan_transportasi}}</td>
-  <td>{{$dat->jumlah}}</td>
+  <td>{{(!is_null($dat->keberadaan_transportasi)?$dat->keberadaan_transportasi:'-')}}</td>
+  <td>{{(!is_null($dat->jumlah)?$dat->jumlah:'-')}}</td>
   
   <td>
     <div class="hidden-sm hidden-xs btn-group">

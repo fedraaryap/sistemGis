@@ -26,6 +26,7 @@ class KualitasAngkatanController extends Controller
     public function store(Request $request)
     {
         $data = new KualitasAngkatan;
+        $data->id_desa =$request->id_desa;
         $data->id_range = $request->id_range;
         $data->jenis_angkatan = $request->jenis_angkatan;
         $data->jk_angkatan = $request->jk_angkatan;
@@ -46,6 +47,7 @@ class KualitasAngkatanController extends Controller
     public function update(Request $request, $id)
     {
         $data = KualitasAngkatan::findorfail($id);
+        $data->id_desa =$request->id_desa;
         $data->id_range = $request->id_range;
         $data->jenis_angkatan = $request->jenis_angkatan;
         $data->jk_angkatan = $request->jk_angkatan;

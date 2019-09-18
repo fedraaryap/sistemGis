@@ -24,6 +24,7 @@ class StatusJasaUsahaController extends Controller
     public function store(Request $request)
     {
         $data = new StatusJasaUsaha();
+        $data->id_desa =$request->id_desa;
         $data->id_jasa_usaha = $request->id_jasa_usaha;
         $data->jumlah_unit_usaha = $request->jumlah_unit_usaha;
         $data->jenis_produksi_kegiatan = $request->jenis_produksi_kegiatan;
@@ -42,6 +43,7 @@ class StatusJasaUsahaController extends Controller
     public function update(Request $request, $id)
     {
         $data = StatusJasaUsaha::findorfail($id);
+        $data->id_desa =$request->id_desa;
         $data->id_jasa_usaha = $request->id_jasa_usaha;
         $data->jumlah_unit_usaha = $request->jumlah_unit_usaha;
         $data->jenis_produksi_kegiatan = $request->jenis_produksi_kegiatan;

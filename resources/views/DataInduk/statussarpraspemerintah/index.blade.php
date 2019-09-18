@@ -32,6 +32,7 @@
           
             <tr>
                 <th>No</th>
+                <th>Desa</th>
                 <th>Jenis Sarpras Pemerintahan</th>
                 <th>Satuan Prasarana</th>
                 <th>Jumlah</th>
@@ -44,10 +45,11 @@
 
   <tr>
   <td>{{$nomor+1}}</td>
+  <td>{{(!is_null($dat->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
   <td>{{$dat->SarprasPemerintahan->jenis_sarpras_pemerintahan}}</td>
-  <td>{{$dat->SatuanPrasarana->satuan_prasarana}}</td>
-  <td>{{$dat->jumlah}}</td>
-  <td>{{$dat->status_sarpras}}</td>
+  <td>{{(!is_null($dat->id_satuan_prasarana)?$dat->SatuanPrasarana->satuan_prasarana:'-')}}</td>
+ <td>{{(!is_null($dat->jumlah)?$dat->jumlah:'-')}}</td>
+ <td>{{(!is_null($dat->status_sarpras)?$dat->status_sarpras:'-')}}</td>
   
   <td>
     <div class="hidden-sm hidden-xs btn-group">

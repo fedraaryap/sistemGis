@@ -16,4 +16,8 @@ class JumlahLembagaPolitik extends Model
 	{
 		return $this->belongsTo('App\Model\Referensi\PartaiPolitik','id_partai','id_partai');
 	}
+	public function Desa()
+	{
+		return $this->belongsTo('App\Model\DaftarDesa\ProfilDesa','id_desa','id_desa');
+	}
 }

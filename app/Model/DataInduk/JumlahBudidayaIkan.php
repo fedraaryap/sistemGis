@@ -16,4 +16,14 @@ class JumlahBudidayaIkan extends Model
 	{
 		return $this->belongsTo('App\Model\Referensi\BudidayaIkan','id_budidaya_ikan','id_budidaya_ikan');
 	}
+
+	public function Desa()
+	{
+		return $this->belongsTo('App\Model\Potensi\PotensiPerternakan','id_jumlah_budidaya','id_jumlah_budidaya');
+	}
+
+	public function Desa()
+	{
+		return $this->belongsTo('App\Model\DaftarDesa\ProfilDesa','id_desa','id_desa');
+	}
 }

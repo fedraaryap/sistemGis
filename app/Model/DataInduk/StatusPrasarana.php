@@ -18,4 +18,9 @@ class StatusPrasarana extends Model
 	public function SatuanPrasarana(){
 	return $this->belongsTo('App\Model\Referensi\SatuanPrasarana','id_satuan_prasarana','id_satuan_prasarana');
 	}
+
+	public function Desa()
+	{
+		return $this->belongsTo('App\Model\DaftarDesa\ProfilDesa','id_desa','id_desa');
+	}
 }

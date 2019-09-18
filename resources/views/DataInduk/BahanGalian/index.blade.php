@@ -6,8 +6,9 @@
       Galian
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-        <li class="active">Here</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+        <li class="active">Data Induk</li>
+        <li class="active">Galian</li>
       </ol>
         </section>
          <!-- Main Section -->
@@ -32,6 +33,7 @@
           
             <tr>
                 <th>No</th>
+                <th>Desa</th>
                 <th>Kepemilikan</th>
                 <th>Jenis Galian</th>
                 <th>Deposit Produksi</th>
@@ -43,6 +45,7 @@
 
   <tr>
   <td>{{$nomor+1}}</td>
+  <td>{{(!is_null($dat->Desa->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
   <td>{{$dat->kepemilikan->kepemilikan}}</td>
   <td>{{$dat->jenis_galian}}</td>
   <td>{{$dat->deposit_produksi}}</td>

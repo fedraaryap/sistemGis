@@ -10,4 +10,9 @@ class PotensiAir extends Model
 	protected $primaryKey = 'id_potensi_air';
 
 	public $timestamps =false;
+
+	public function Desa()
+	{
+		return $this->belongsTo('App\Model\DaftarDesa\ProfilDesa','id_desa','id_desa');
+	}
 }

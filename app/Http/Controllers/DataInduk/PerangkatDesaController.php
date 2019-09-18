@@ -23,7 +23,8 @@ class PerangkatDesaController extends Controller
   
     public function store(Request $request)
     {
-        $data = new PakanTernak;
+        $data = new PerangkatDesa;
+        $data->id_desa =$request->id_desa;
         $data->kepala_desa = $request->kepala_desa;
         $data->tahun_dimulai = $request->tahun_dimulai;
         $data->tahun_berakhir = $request->tahun_berakhir;
@@ -37,7 +38,7 @@ class PerangkatDesaController extends Controller
  
     public function edit($id)
     {
-         $data = PakanTernak::findorfail($id);
+         $data = PerangkatDesa::findorfail($id);
          $TahunAktif = PerangkatDesa::all();
         return view('DataInduk.PerangkatDesa.edit',compact('data','TahunAktif'));
     }
@@ -45,7 +46,8 @@ class PerangkatDesaController extends Controller
 
     public function update(Request $request, $id)
     {
-        $data = PakanTernak::findorfail($id);
+        $data = PerangkatDesa::findorfail($id);
+        $data->id_desa =$request->id_desa;
         $data->kepala_desa = $request->kepala_desa;
         $data->tahun_dimulai = $request->tahun_dimulai;
         $data->tahun_berakhir = $request->tahun_berakhir;
@@ -59,7 +61,7 @@ class PerangkatDesaController extends Controller
  
     public function destroy($id)
     {
-        $data = PakanTernak::find($id);
+        $data = PerangkatDesa::find($id);
         $data->delete();
         return redirect()->route('perangkat');
     }

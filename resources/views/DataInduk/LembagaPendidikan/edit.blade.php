@@ -1,14 +1,16 @@
 @extends('layouts.dashboard')
+
 @section('content')
+
 <?php
-
-$Sekolah=[1=>'playgroup',2=>'SD/Sederajat'];
-
 $Status = [
 0=>'tidak Terdaftar',1=>'Terdaftar'];
 
-?>
+$desa = [1=>'Totoharjo',2=>'Hata',3=>'bakauhani',4=>'kelawi',5=>'semanak'];
 
+$Kepem = [1=>'Pemerintah',2=>'Swasta'];
+
+?>
 
 <div class="content-header">
       <h1>
@@ -25,21 +27,29 @@ $Status = [
         <div class="col-md-12">
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Input/Ubah Informasi Lembaga Pendidikan</h3>
+              <h3 class="box-title">Input/Ubah Lembaga Pendidikan</h3>
             </div>
+
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" method="post" action="{{route('lemp.update',$data->id_pendidikan)}}">
+          <form role="form" method="post" action="{{route('lemp.update',$data->id_pendidikan)}}">
               {{ csrf_field() }}
-              {{method_field('PUT')}}
+               {{method_field('PUT')}}
               <div class="box-body">
                 <div class="form-group">
+                   <label for="id_desa">Desa</label>
+                  <select class="form-control" name="id_desa">
+                    <option value="" selected disabled></option>
+                  @foreach($desa AS $desa =>$des )
+                    <option value="{{ $desa }}">{{ $des }}</option>
+                  @endforeach
+                </select>
 
                <label for="id_sekolah">Nama Jenjang Sekolah</label>
                   <select class="form-control" name="id_sekolah">
                     <option value="" selected disabled></option>
-                  @foreach($Sekolah AS $Sekolah =>$sekolah )
-                    <option value="{{ $Sekolah }}">{{ $sekolah }}</option>
+                  @foreach($Sekolah AS $sekolah =>$sek )
+                    <option value="{{ $sek->id_sekolah }}">{{ $sek->nama_sekolah }}</option>
                   @endforeach
                 </select>
 
@@ -51,31 +61,35 @@ $Status = [
                   @endforeach
                 </select>
 
-                  <label for="jumlah_pengajar">Jumlah Sekolah</label>
-                  <input type="number" class="form-control" name="jumlah_sekolah" id="jumlah_sekolah" placeholder="masukan data">
+                  <label for="jumlah_sekolah">Jumlah Sekolah</label>
+                  <input type="number" class="form-control" name="jumlah_sekolah" id="jumlah_sekolah" placeholder="masukan data" value="{{$data->jumlah_sekolah}}">
                   <label for="jumlah_pengajar">Jumlah Pengajar</label>
-                  <input type="number" class="form-control" name="jumlah_pengajar" id="jumlah_pengajar" placeholder="masukan data">
+                  <input type="number" class="form-control" name="jumlah_pengajar" id="jumlah_pengajar" placeholder="masukan data" value="{{$data->jumlah_pengajar}}">
                   <label for="jumlah_siswa">Jumlah Siswa</label>
-                  <input type="number" class="form-control" name="jumlah_siswa" id="jumlah_siswa" placeholder="masukan data">
+                  <input type="number" class="form-control" name="jumlah_siswa" id="jumlah_siswa" placeholder="masukan data" value="{{$data->jumlah_siswa}}">
+
                   <label for="kepemilikan">Kepemilikan</label>
-                  <input type="text" class="form-control" name="kepemilikan" id="kepemilikan" placeholder="masukan data">
-                  
+                  <select class="form-control" name="kepemilikan">
+                    <option value="" selected></option>
+                  @foreach($Kepem AS $Kepem =>$kep)
+                    <option value="{{ $Kepem }}">{{ $kep }}</option>
+                  @endforeach
+                </select>
+              
 
-
-                  
-                </div>
-              </div>
+               
+          </form>
               <!-- /.box-body -->
-
               <div class="box-footer">
                 <button type="submit" class="btn btn-primary">Simpan</button>
                 <a href="{{ url()->previous() }}" class="btn btn-danger">Batal</a>
               </div>
             </form>
-          </div>
-        </section>
+       </div>
+     </div>
   <!-- /.content -->
-</div>
+  </div>
+   </section>
 </div>
 
 

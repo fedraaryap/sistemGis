@@ -5,19 +5,20 @@ namespace App\Http\Controllers\DataInduk;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\DataInduk\JumlahOrang;
+use App\Model\Referensi\LembagaEkonomi;
 
 class JumlahOrangController extends Controller
 {
    public function index()
     {
-        $data = JumlahOrang::all();
+        $data = JumlahOrang::get();
         return view('DataInduk.JumlahOrang.index',compact('data'));
     }
 
 
     public function create()
     {
-        $LembagaEkonomi = JumlahOrang::all();
+        $LembagaEkonomi = LembagaEkonomi::all();
         return view('DataInduk.JumlahOrang.create',compact('LembagaEkonomi'));
     }
 
@@ -25,6 +26,7 @@ class JumlahOrangController extends Controller
     public function store(Request $request)
     {
         $data = new JumlahOrang;
+        $data->id_desa =$request->id_desa;
         $data->id_lembaga_ekonomi = $request->id_lembaga_ekonomi;
         $data->jumlah_pengurus = $request->jumlah_pengurus;
         $data->jumlah_anggota = $request->jumlah_anggota;
@@ -38,7 +40,7 @@ class JumlahOrangController extends Controller
     public function edit($id)
     {
          $data = JumlahOrang::findorfail($id);
-         $LembagaEkonomi =JumlahOrang::all();
+         $LembagaEkonomi =LembagaEkonomi::all();
         return view('DataInduk.JumlahOrang.edit',compact('data','LembagaEkonomi'));
     }
 
@@ -46,6 +48,7 @@ class JumlahOrangController extends Controller
     public function update(Request $request, $id)
     {
         $data = JumlahOrang::findorfail($id);
+        $data->id_desa =$request->id_desa;
         $data->id_lembaga_ekonomi = $request->id_lembaga_ekonomi;
         $data->jumlah_pengurus = $request->jumlah_pengurus;
         $data->jumlah_anggota = $request->jumlah_anggota;

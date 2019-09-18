@@ -33,6 +33,7 @@
           
             <tr>
                 <th>No</th>
+                <th>Desa</th>
                 <th>Jenis Keamanan</th>
                 <th>Jumlah Anggota</th>
                 <th>Jumlah Poskamling</th>
@@ -47,12 +48,18 @@
 
   <tr>
   <td>{{$nomor+1}}</td>
+  <td>{{(!is_null($dat->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
   <td>{{$dat->JenisKeamanan->jenis_keamanan}}</td>
   <td>{{$dat->jumlah_anggota}}</td>
   <td>{{$dat->jumlah_poskamling}}</td>
-  <td>{{$dat->jumlah_kegiatan}}</td>
-  <td>{{$dat->nama_organisasi_induk}}</td>
-  <td>{{$dat->status}}</td>
+  <td>{{$dat->jumlah_kegiaatan}}</td>
+  <td>{{(!is_null($dat->nama_organisasi_induk)?$dat->nama_organisasi_induk:'-')}}</td>
+  @if($dat->status == 1)
+    <td>Ada</td>
+  @elseif($dat->status == 0)
+    <td>Tidak Ada</td>
+  @endif()
+
   <td>
 	 <div class="hidden-sm hidden-xs btn-group">
             <a class="btn btn-xs btn-info" href="{{route('lemkeamanan.edit',$dat->id_keamanan)}}">

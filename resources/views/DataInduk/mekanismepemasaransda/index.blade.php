@@ -32,6 +32,7 @@
             
             <tr>
                 <th>no</th>
+                <th>Desa</th>
                 <th>Jenis Pemasaran</th>
                 <th>Kategori</th>
                 <th>Status</th>
@@ -45,9 +46,14 @@
 
   <tr>
   <td>{{$nomor+1}}</td>
+  <td>{{(!is_null($dat->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
   <td>{{$dat->jenis_pemasaran_sda}}</td>
   <td>{{$dat->katagori_pemasaran}}</td>
-  <td>{{$dat->status_pemasaran}}</td>
+  @if($dat->status_pemasaran == 1)
+    <td>Ada</td>
+  @elseif($dat->status_pemasaran == 0)
+    <td>Tidak Ada</td>
+  @endif()
   <td>
      <div class="hidden-sm hidden-xs btn-group">
             <a class="btn btn-xs btn-info" href="{{route('mekpemsda.edit',$dat->id_pemasaran_sda)}}">

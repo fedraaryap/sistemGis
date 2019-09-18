@@ -32,6 +32,7 @@
             
             <tr>
                 <th>no</th>
+                <th>Desa</th>
                 <th>Jenis Wilayah</th>
                 <th>Luas Wilayah</th>
                 <th>Satuan</th>
@@ -46,10 +47,15 @@
 
   <tr>
   <td>{{$nomor+1}}</td>
-  <td>{{$dat->LuasWil->jenis_wilayah}}</td>
-  <td>{{$dat->luas_wilayah}}</td>
-   <td>{{$dat->SatuanWil->satuan}}</td>
-  <td>{{$dat->satus}}</td>
+  <td>{{(!is_null($dat->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
+  <td>{{(!is_null($dat->id_wilayah_lahan)?$dat->LuasWil->jenis_wilayah:'-')}}</td>
+  <td>{{(!is_null($dat->luas_wilayah)?$dat->luas_wilayah:'-')}}</td>
+  <td>{{(!is_null($dat->id_satuan)?$dat->SatuanWil->satuan:'-')}}</td>
+  @if($dat->status == 1)
+    <td>Ada</td>
+  @elseif($dat->status == 0)
+    <td>Tidak Ada</td>
+  @endif()
   <td>
      <div class="hidden-sm hidden-xs btn-group">
             <a class="btn btn-xs btn-info" href="{{route('luas.edit',$dat->id_luas_wilayah)}}">

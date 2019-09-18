@@ -26,6 +26,7 @@ class JumlahUsiaSdmController extends Controller
     public function store(Request $request)
     {
         $data = new JumlahUsiaSdm;
+        $data->id_desa =$request->id_desa;
         $data->id_range = $request->id_range;
         $data->jk_usia = $request->jk_usia;
         $data->jumlah_sdm_usia = $request->jumlah_sdm_usia;
@@ -46,6 +47,7 @@ class JumlahUsiaSdmController extends Controller
     public function update(Request $request, $id)
     {
         $data = JumlahUsiaSdm::findorfail($id);
+        $data->id_desa =$request->id_desa;
         $data->id_range = $request->id_range;
         $data->jk_usia = $request->jk_usia;
         $data->jumlah_sdm_usia = $request->jumlah_sdm_usia;

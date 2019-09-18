@@ -13,12 +13,16 @@ class StatusSarprasPemerintahan extends Model
 
 	public function SarprasPemerintahan()
 	{
-		return $this->belongsTo('App\Model\Referensi\SarprasPemerintahan','id_sarpas_pemerintahan','id_sarpas_pemerintahan');
+		return $this->belongsTo('App\Model\Referensi\SarprasPemerintahan','id_sarpas_pemeritahan','id_sarpas_pemeritahan');
 	}
 
 	public function SatuanPrasarana()
 	{
 		return $this->belongsTo('App\Model\Referensi\SatuanPrasarana','id_satuan_prasarana','id_satuan_prasarana');
+	}
+	public function Desa()
+	{
+		return $this->belongsTo('App\Model\DaftarDesa\ProfilDesa','id_desa','id_desa');
 	}
 
 }

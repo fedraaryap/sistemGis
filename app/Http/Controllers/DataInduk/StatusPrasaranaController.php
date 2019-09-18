@@ -27,6 +27,7 @@ class StatusPrasaranaController extends Controller
     public function store(Request $request)
     {
         $data = new StatusPrasarana();
+        $data->id_desa =$request->id_desa;
         $data->id_jenis_prasarana = $request->id_jenis_prasarana;
         $data->id_satuan_prasarana = $request->id_satuan_prasarana;
         $data->kondisi_prasarana_sarana = $request->kondisi_prasarana_sarana;
@@ -46,6 +47,7 @@ class StatusPrasaranaController extends Controller
     public function update(Request $request, $id)
     {
         $data = StatusPrasarana::findorfail($id);
+        $data->id_desa =$request->id_desa;
         $data->id_jenis_prasarana = $request->id_jenis_prasarana;
         $data->id_satuan_prasarana = $request->id_satuan_prasarana;
         $data->kondisi_prasarana_sarana = $request->kondisi_prasarana_sarana;

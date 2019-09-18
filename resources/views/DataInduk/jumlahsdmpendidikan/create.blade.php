@@ -2,14 +2,9 @@
 
 @section('content')
 <?php
-$StatusPendidikan = [
-];
-
-$JenisKelamin = [0=>'Perempuan',1=>'Laki-Laki'
-];
+$JenisKelamin = [0=>'Perempuan',1=>'Laki-Laki'];
+$desa = [1=>'Totoharjo',2=>'Hata',3=>'bakauhani',4=>'kelawi',5=>'semanak'];
 ?>
-
-
 
 <div class="content-header">
       <h1>
@@ -35,11 +30,19 @@ $JenisKelamin = [0=>'Perempuan',1=>'Laki-Laki'
               {{ csrf_field() }}
               <div class="box-body">
                 <div class="form-group">
+                         <label for="id_desa">Desa</label>
+                  <select class="form-control" name="id_desa">
+                    <option value="" selected disabled></option>
+                  @foreach($desa AS $desa =>$des )
+                    <option value="{{ $desa }}">{{ $des }}</option>
+                  @endforeach
+                </select>
+                
                <label for="id_status_pendidikan">Tingkat Pendidikan</label>
                   <select class="form-control" name="id_status_pendidikan">
                     <option value="" selected disabled></option>
-                  @foreach($StatusPendidikan AS $StatusPendidikan =>$pendi )
-                    <option value="{{ $StatusPendidikan }}">{{ $pendi }}</option>
+                  @foreach($StatusPendidikan AS $statusPendidikan =>$pen )
+                    <option value="{{ $pen->id_status_pendidikan }}">{{ $pen->tingkat_pendidikan }}</option>
                   @endforeach
                 </select>
 

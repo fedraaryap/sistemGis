@@ -2,11 +2,9 @@
 
 @section('content')
 <?php
-$Kepemilikan = [
-];
 
+$desa = [1=>'Totoharjo',2=>'Hata',3=>'bakauhani',4=>'kelawi',5=>'semanak'];
 ?>
-
 
 
 <div class="content-header">
@@ -33,6 +31,14 @@ $Kepemilikan = [
               {{ csrf_field() }}
               <div class="box-body">
                 <div class="form-group">
+                  <label for="id_desa">Desa</label>
+                  <select class="form-control" name="id_desa">
+                    <option value="" selected disabled></option>
+                  @foreach($desa AS $desa =>$des )
+                    <option value="{{ $desa }}">{{ $des }}</option>
+                  @endforeach
+                </select>
+                  
                   <label for="ket_pakan_ternak">Keterangan Pakan Ternak</label>
                   <input type="text" class="form-control" name="ket_pakan_ternak" id="ket_pakan_ternak" placeholder="masukan data">
                    <label for="jumlah_luas">Luas/Jumlah</label>
@@ -40,14 +46,13 @@ $Kepemilikan = [
 
            
 
-                              <label for="kepemilikan">Kepemilikan</label>
-                  <select class="form-control" name="kepemilikan">
+                              <label for="id_status_kepemilikan">Kepemilikan</label>
+                  <select class="form-control" name="id_status_kepemilikan">
                     <option value="" selected disabled></option>
                   @foreach($Kepemilikan AS $Kepemilikan =>$kep )
-                    <option value="{{ $Kepemilikan }}">{{ $kep }}</option>
+                    <option value="{{ $kep->id_status_kepemilikan}}">{{ $kep->kepemilikan }}</option>
                   @endforeach
                 </select>
-    
     
               
                  

@@ -32,6 +32,7 @@
             
             <tr>
                 <th>no</th>
+                <th>Desa</th>
                 <th>Mekanisme Pemasaran</th>
                 <th>Jenis Produktifitas</th>
                 <th>Jenis Tanaman</th>
@@ -48,6 +49,7 @@
 
   <tr>
   <td>{{$nomor+1}}</td>
+  <td>{{(!is_null($dat->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
   <td>{{$dat->Produktifitas->Pemasaran->mekanisme_pemasaran}}</td>
   <td>{{$dat->Produktifitas->jenis_produktifitas}}</td>
   <td>{{$dat->jenis_tanaman}}</td>

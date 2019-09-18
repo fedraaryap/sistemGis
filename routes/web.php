@@ -13,28 +13,132 @@
 
 Route::get('/', function () {
     return view('welcome');
+
 });
 
-Route::get('/login', 'Auth\LoginController@showLoginForm');
-Route::get('/dashboard','Admin\AdminController@dashboard')->name('dashboard');
+Route::get('/home', function () {
+    return view('welcome');
+
+});
+
+
+
+Route::get('/PetaDesa','User\UserController@jumlah_pendidikan')->name('PetaDesa');
+Route::get('/petakeamanan','User\UserController@lembagakeamanan')->name('petakeamanan');
+Route::get('/PetaDesa/get','User\UserController@jumlah_pendidikan');
+Route::get('/detailpendidikan/{id}','User\UserDetailController@pendidikan');
+Route::get('/detailkeamanan/{id}','User\UserDetailController@keamanan');
+
+
+
+
+//Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+
+
+
 Route::get('/register', 'Auth\RegisterController@showregisterForm');
 Route::post('/register', 'Auth\RegisterController@postregisterForm')->name('register');
-Route::get('/login', 'Auth\LoginController@showLoginForm');
-Route::post('/login', 'Auth\LoginController@postLoginForm')->name('login');
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('/loginform', 'Auth\LoginController@postLoginForm')->name('loginform');
 Route::get('/logout', 'Auth\RegisterController@logout')->name('logout');
-Route::get('/desa', 'DaftarDesa\DesaController@desa');
+
+
+
+
+
+
+Route::get('/dashboard','Admin\AdminController@dashboard')->name('dashboard');
+Route::get('/desa', 'DaftarDesa\DesaController@index')->name('desa');
+Route::get('/desa/Tambah', 'DaftarDesa\DesaController@create');
+Route::post('/desa/Tambah', 'DaftarDesa\DesaController@store')->name('desa.simpan');
 
 //Route Menu Potensi
-Route::get('/kelembagaan', 'PotensiDesa\kelembagaan\KelembagaanController@index')->name('lem');
-Route::get('/ekonomi', 'PotensiDesa\LembagaEkonomiController@ekonomi');
-Route::get('/pertanian', 'PotensiDesa\PertanianController@pertanian');
-Route::get('/perternakan', 'PotensiDesa\PerternakanController@perternakan');
-Route::get('/ruangpublik', 'PotensiDesa\RuangPublikController@RuangPublik');
-Route::get('/sarprasdesa', 'PotensiDesa\SarprasDesaController@SarprasDesa');
-Route::get('/sarpraspemerintah', 'PotensiDesa\SarprasPemerintahanController@SarprasPemerintahan');
-Route::get('/sda', 'PotensiDesa\SdaController@sda');
-Route::get('/sdm', 'PotensiDesa\SdmController@sdm');
-Route::get('/umum', 'PotensiDesa\UmumController@umum');
+Route::get('/kelembagaan/{id}', 'PotensiDesa\KelembagaanController@index')->name('kelembagaan');
+Route::post('kabupaten/get', 'PotensiDesa\KelembagaanController@drill_down');
+Route::post('kec/get', 'PotensiDesa\KelembagaanController@drill_down');
+Route::post('desa/get', 'PotensiDesa\KelembagaanController@desa');
+Route::get('/kelembagaan/Tambah', 'PotensiDesa\KelembagaanController@create');
+Route::post('/kelembagaan/Tambah', 'PotensiDesa\KelembagaanController@store')->name('kelembagaan.simpan');
+Route::get('/kelembagaan/{id}/edit', 'PotensiDesa\KelembagaanController@edit')->name('kelembagaan.edit');
+Route::put('/kelembagaan/{id}/update', 'PotensiDesa\KelembagaanController@update')->name('kelembagaan.update');
+Route::get('/kelembagaan/{id}/delete', 'PotensiDesa\KelembagaanController@destroy')->name('kelembagaan.delete');
+
+
+
+Route::get('/ekonomi', 'PotensiDesa\LembagaEkonomiController@index')->name('ekonomi');
+Route::get('/ekonomi/Tambah', 'PotensiDesa\LembagaEkonomiController@create');
+Route::post('/ekonomi/Tambah', 'PotensiDesa\LembagaEkonomiController@store')->name('ekonomi.simpan');
+Route::get('/ekonomi/{id}/edit', 'PotensiDesa\LembagaEkonomiController@edit')->name('ekonomi.edit');
+Route::put('/ekonomi/{id}/update', 'PotensiDesa\LembagaEkonomiController@update')->name('ekonomi.update');
+Route::get('/ekonomi/{id}/delete', 'PotensiDesa\LembagaEkonomiController@destroy')->name('ekonomi.delete');
+
+
+
+Route::get('/pertanian', 'PotensiDesa\PertanianController@index')->name('pertanian');
+Route::get('/pertanian/Tambah', 'PotensiDesa\PertanianController@create');
+Route::post('/pertanian/Tambah', 'PotensiDesa\PertanianController@store')->name('pertanian.simpan');
+Route::get('/pertanian/{id}/edit', 'PotensiDesa\PertanianController@edit')->name('pertanian.edit');
+Route::put('/pertanian/{id}/update', 'PotensiDesa\PertanianController@update')->name('pertanian.update');
+Route::get('/pertanian/{id}/delete', 'PotensiDesa\PertanianController@destroy')->name('pertanian.delete');
+
+
+
+Route::get('/perternakan', 'PotensiDesa\PerternakanController@index')->name('perternakan');
+Route::get('/perternakan/Tambah', 'PotensiDesa\PerternakanController@create');
+Route::post('/perternakan/Tambah', 'PotensiDesa\PerternakanController@store')->name('perternakan.simpan');
+Route::get('/perternakan/{id}/edit', 'PotensiDesa\PerternakanController@edit')->name('perternakan.edit');
+Route::put('/perternakan/{id}/update', 'PotensiDesa\PerternakanController@update')->name('perternakan.update');
+Route::get('/perternakan/{id}/delete', 'PotensiDesa\PerternakanController@destroy')->name('perternakan.delete');
+
+
+Route::get('/ruangpublik', 'PotensiDesa\RuangPublikController@index')->name('ruangpublik');
+Route::get('/ruangpublik/Tambah', 'PotensiDesa\RuangPublikController@create');
+Route::post('/ruangpublik/Tambah', 'PotensiDesa\RuangPublikController@store')->name('ruangpublik.simpan');
+Route::get('/ruangpublik/{id}/edit', 'PotensiDesa\RuangPublikController@edit')->name('ruangpublik.edit');
+Route::put('/ruangpublik/{id}/update', 'PotensiDesa\RuangPublikController@update')->name('ruangpublik.update');
+Route::get('/ruangpublik/{id}/delete', 'PotensiDesa\RuangPublikController@destroy')->name('ruangpublik.delete');
+
+
+Route::get('/sarprasdesa', 'PotensiDesa\SarprasDesaController@index')->name('sarprasdesa');
+Route::get('/sarprasdesa/Tambah', 'PotensiDesa\SarprasDesaController@create');
+Route::post('/sarprasdesa/Tambah', 'PotensiDesa\SarprasDesaController@store')->name('sarprasdesa.simpan');
+Route::get('/sarprasdesa/{id}/edit', 'PotensiDesa\SarprasDesaController@edit')->name('sarprasdesa.edit');
+Route::put('/sarprasdesa/{id}/update', 'PotensiDesa\SarprasDesaController@update')->name('sarprasdesa.update');
+Route::get('/sarprasdesa/{id}/delete', 'PotensiDesa\SarprasDesaController@destroy')->name('sarprasdesa.delete');
+
+
+Route::get('/sarpraspemerintah', 'PotensiDesa\SarprasPemerintahanController@index')->name('sarpraspemerintah');
+Route::get('/sarpraspemerintah/Tambah', 'PotensiDesa\SarprasPemerintahanController@create');
+Route::post('/sarpraspemerintah/Tambah', 'PotensiDesa\SarprasPemerintahanController@store')->name('sarpraspemerintah.simpan');
+Route::get('/sarpraspemerintah/{id}/edit', 'PotensiDesa\SarprasPemerintahanController@edit')->name('sarpraspemerintah.edit');
+Route::put('/sarpraspemerintah/{id}/update', 'PotensiDesa\SarprasPemerintahanController@update')->name('sarpraspemerintah.update');
+Route::get('/sarpraspemerintah/{id}/delete', 'PotensiDesa\SarprasPemerintahanController@destroy')->name('sarpraspemerintah.delete');
+
+
+Route::get('/sda', 'PotensiDesa\SdaController@index')->name('sda');
+Route::get('/sda/Tambah', 'PotensiDesa\SdaController@create');
+Route::post('/sda/Tambah', 'PotensiDesa\SdaController@store')->name('sda.simpan');
+Route::get('/sda/{id}/edit', 'PotensiDesa\SdaController@edit')->name('sda.edit');
+Route::put('/sda/{id}/update', 'PotensiDesa\SdaController@update')->name('sda.update');
+Route::get('/sda/{id}/delete', 'PotensiDesa\SdaController@destroy')->name('sda.delete');
+
+
+Route::get('/sdm', 'PotensiDesa\SdmController@index')->name('sdm');
+Route::get('/sdm/Tambah', 'PotensiDesa\SdmController@create');
+Route::post('/sdm/Tambah', 'PotensiDesa\SdmController@store')->name('sdm.simpan');
+Route::get('/sdm/{id}/edit', 'PotensiDesa\SdmController@edit')->name('sdm.edit');
+Route::put('/sdm/{id}/update', 'PotensiDesa\SdmController@update')->name('sdm.update');
+Route::get('/sdm/{id}/delete', 'PotensiDesa\SdmController@destroy')->name('sdm.delete');
+
+
+
+Route::get('/umum', 'PotensiDesa\UmumController@index')->name('umum');
+Route::get('/umum/Tambah', 'PotensiDesa\UmumController@create');
+Route::post('/umum/Tambah', 'PotensiDesa\UmumController@store')->name('umum.simpan');
+Route::get('/umum/{id}/edit', 'PotensiDesa\UmumController@edit')->name('umum.edit');
+Route::put('/umum/{id}/update', 'PotensiDesa\UmumController@update')->name('umum.update');
+Route::get('/umum/{id}/delete', 'PotensiDesa\UmumController@destroy')->name('umum.delete');
+
 
 
 //----------------------------------------------------------data induk--------------------------------------------------------------------
@@ -631,4 +735,5 @@ Route::post('/kepemilikan/tambah','Referensi\StatusKepemilikanController@store')
 Route::get('/kepemilikan/{id}/edit','Referensi\StatusKepemilikanController@edit')->name('kepemilikan.edit');
 Route::put('/kepemilikan/{id}/edit','Referensi\StatusKepemilikanController@update')->name('kepemilikan.update');
 Route::get('/kepemilikan/{id}/delete','Referensi\StatusKepemilikanController@destroy')->name('kepemilikan.delete');
+
 

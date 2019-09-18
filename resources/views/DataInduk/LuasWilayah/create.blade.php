@@ -3,15 +3,15 @@
 @section('content')
 <?php
 
-$LuasWil=[];
-
 $A_memiliki = [0=>'tidak',1=>'iya'];
 
-$SatuanWil = [
+$SatuanWil = [1=>'ha'
 ];
 
 $Status = [
 0=>'tidak ada',1=>'ada'];
+
+$desa = [1=>'Totoharjo',2=>'Hata',3=>'bakauhani',4=>'kelawi',5=>'semanak'];
 
 ?>
 
@@ -41,12 +41,19 @@ $Status = [
               {{ csrf_field() }}
               <div class="box-body">
                 <div class="form-group">
+                   <label for="id_desa">Desa</label>
+                  <select class="form-control" name="id_desa">
+                    <option value="" selected disabled></option>
+                  @foreach($desa AS $desa =>$des )
+                    <option value="{{ $desa }}">{{ $des }}</option>
+                  @endforeach
+                </select>
 
                <label for="id_wilayah_lahan">Jenis Wilayah</label>
                   <select class="form-control" name="id_wilayah_lahan">
                     <option value="" selected disabled></option>
                   @foreach($LuasWil AS $LuasWil =>$wil )
-                    <option value="{{ $LuasWil }}">{{ $wil }}</option>
+                    <option value="{{ $wil->id_wilayah_lahan }}">{{ $wil->jenis_wilayah }}</option>
                   @endforeach
                 </select>
 
@@ -70,8 +77,8 @@ $Status = [
                   @endforeach
                 </select>
 
-                <label for="status">Status</label>
-                  <select class="form-control" name="status">
+                <label for="satus">Status</label>
+                  <select class="form-control" name="satus">
                     <option value="" selected></option>
                   @foreach($Status AS $Status =>$stat)
                     <option value="{{ $Status }}">{{ $stat }}</option>

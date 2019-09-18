@@ -1,12 +1,12 @@
 @extends('layouts.dashboard')
 
 @section('content')
+
+
 <?php
-$Produksi = [
-];
+$desa = [1=>'Totoharjo',2=>'Hata',3=>'bakauhani',4=>'kelawi',5=>'semanak'];
+
 ?>
-
-
 
 <div class="content-header">
       <h1>
@@ -32,11 +32,20 @@ $Produksi = [
               {{ csrf_field() }}
               <div class="box-body">
                 <div class="form-group">
+                  <label for="id_desa">Desa</label>
+                  <select class="form-control" name="id_desa">
+                    <option value="" selected disabled></option>
+                  @foreach($desa AS $desa =>$des )
+                    <option value="{{ $desa }}">{{ $des }}</option>
+                  @endforeach
+                </select>
+
+
                <label for="id_produksi">Nama Produksi</label>
                   <select class="form-control" name="id_produksi">
                     <option value="" selected disabled></option>
-                  @foreach($Produksi AS $Produksi =>$pro )
-                    <option value="{{ $Produksi }}">{{ $pro }}</option>
+                  @foreach($Produksi AS $produksi =>$pro )
+                    <option value="{{ $pro->id_produksi }}">{{ $pro->nama_produksi }}</option>
                   @endforeach
                 </select>
 

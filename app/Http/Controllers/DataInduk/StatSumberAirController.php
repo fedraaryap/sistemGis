@@ -24,6 +24,7 @@ class StatSumberAirController extends Controller
     public function store(Request $request)
     {
     	$data = new StatusSumberAir();
+    	$data->id_desa =$request->id_desa;
 		$data->id_sumber_air = $request->id_sumber_air;
 		$data->status_sumber = $request->status_air;
 		$data->save();
@@ -41,6 +42,7 @@ class StatSumberAirController extends Controller
 	public function update(Request $request, $id)
 	{
 		$data = StatusSumberAir::findorfail($id);
+		$data->id_desa =$request->id_desa;
 		$data->id_sumber_air = $request->id_sumber_air;
 		$data->status_sumber = $request->status_air;
 		$data->save();

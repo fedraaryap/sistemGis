@@ -32,6 +32,7 @@
           
             <tr>
                 <th>No</th>
+                <th>Desa</th>
                 <th>SDM Desa</th>
                 <th>Jumlah SDM</th>
                 <th>Jenis Kelamin</th>
@@ -43,9 +44,11 @@
 
   <tr>
   <td>{{$nomor+1}}</td>
+  <td>{{(!is_null($dat->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
   <td>{{$dat->SdmDesa->sdm_desa}}</td>
-  <td>{{$dat->jumlah_sdm}}</td>
-  <td>{{$dat->jk_sdm}}</td>
+  <td>{{(!is_null($dat->jumlah_sdm)?$dat->jumlah_sdm:'-')}}</td>
+  <td>{{(!is_null($dat->jk_sdm)?$dat->jk_sdm:'-')}}</td>
+  
   
   <td>
     <div class="hidden-sm hidden-xs btn-group">

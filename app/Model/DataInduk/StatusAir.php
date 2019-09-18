@@ -20,4 +20,8 @@ class StatusAir extends Model
 	{
 		return $this->belongsTo('App\Model\Referensi\AirPanas','id_air_panas','id_air_panas');
 	}
+	public function Desa()
+	{
+		return $this->belongsTo('App\Model\DaftarDesa\ProfilDesa','id_desa','id_desa');
+	}
 }

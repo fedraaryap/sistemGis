@@ -1,9 +1,10 @@
 @extends('layouts.dashboard')
 
 @section('content')
+
 <?php
-$SumberKualitas = [
-];
+
+$desa = [1=>'Totoharjo',2=>'Hata',3=>'bakauhani',4=>'kelawi',5=>'semanak'];
 ?>
 
 
@@ -28,15 +29,25 @@ $SumberKualitas = [
 
             <!-- /.box-header -->
             <!-- form start -->
-          <form role="form" method="post" action="{{route('jumstatsdm.simpan')}}">
+          <form role="form" method="post" action="{{route('udara.simpan')}}">
               {{ csrf_field() }}
               <div class="box-body">
                 <div class="form-group">
+                         <label for="id_desa">Desa</label>
+                  <select class="form-control" name="id_desa">
+                    <option value="" selected disabled></option>
+                  @foreach($desa AS $desa =>$des )
+                    <option value="{{ $desa }}">{{ $des }}</option>
+                  @endforeach
+                </select>
+
+
+                  
                <label for="id_sumber">Sumber</label>
                   <select class="form-control" name="id_sumber">
                     <option value="" selected disabled></option>
-                  @foreach($SumberKualitas AS $SumberKualitas =>$kualitas )
-                    <option value="{{ $SumberKualitas }}">{{ $kualitas }}</option>
+                  @foreach($SumberKualitas AS $sumberKualitas =>$kua )
+                    <option value="{{ $kua->id_sumber }}">{{ $kua->sumber }}</option>
                   @endforeach
                 </select>
 
@@ -44,11 +55,11 @@ $SumberKualitas = [
                   <label for="jumlah_lokasi_pencemaran">Jumlah Lokasi</label>
                   <input type="number" class="form-control" name="jumlah_lokasi_pencemaran" id="jumlah_lokasi_pencemaran" placeholder="masukan data">
                     <label for="politan_pencemaran">Polutan</label>
-                  <input type="number" class="form-control" name="politan_pencemaran" id="politan_pencemaran" placeholder="masukan data">
+                  <input type="text" class="form-control" name="politan_pencemaran" id="politan_pencemaran" placeholder="masukan data">
                     <label for="efek">Efek</label>
-                  <input type="number" class="form-control" name="efek" id="efek" placeholder="masukan data">
+                  <input type="text" class="form-control" name="efek" id="efek" placeholder="masukan data">
                     <label for="kepemilikan_pemda_swasta">Kepemilikan</label>
-                  <input type="number" class="form-control" name="kepemilikan_pemda_swasta" id="kepemilikan_pemda_swasta" placeholder="masukan data">
+                  <input type="text" class="form-control" name="kepemilikan_pemda_swasta" id="kepemilikan_pemda_swasta" placeholder="masukan data">
 
               
                  

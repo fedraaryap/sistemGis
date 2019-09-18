@@ -46,10 +46,16 @@
 
   <tr>
   <td>{{$nomor+1}}</td>
-  <td>{{(!is_null($dat->id_prasarana_sarana)?$dat->Prasarana->macam_prasarana_sarana:'-')}}</td>
+  <td>{{(!is_null($dat->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
+  <td>{{(!is_null($dat->id_prasarana_sarana)?$dat->Prasarana->macam_prasaranan_sarana:'-')}}</td>
   <td>{{(!is_null($dat->id_satuan_prasarana)?$dat->SatuanPrasarana->satuan_prasarana:'-')}}</td>
-  <td>{{$dat->jumlah}}</td>
-  <td>{{$dat->status_prasarana_sarana}}</td>
+  <td>{{(!is_null($dat->jumlah)?$dat->jumlah:'-')}}</td>
+   @if($dat->status_prasarana_sarana == 1)
+    <td>Ada</td>
+  @elseif($dat->status_prasarana_sarana == 0)
+    <td>Tidak Ada</td>
+  @endif()
+  
   <td>
       <div class="hidden-sm hidden-xs btn-group">
             <a class="btn btn-xs btn-info" href="{{route('statpraslainnya.edit',$dat->id_stat_prasarana)}}">

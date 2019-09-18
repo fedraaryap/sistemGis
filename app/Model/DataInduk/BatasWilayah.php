@@ -16,4 +16,10 @@ class BatasWilayah extends Model
 	{
 		return $this->belongsTo('App\Model\Referensi\Batas','id_batas','id_batas');
 	}
+
+	public function Desa()
+	{
+		return $this->belongsTo('App\Model\DaftarDesa\ProfilDesa','id_desa','id_desa');
+	}
+
 }

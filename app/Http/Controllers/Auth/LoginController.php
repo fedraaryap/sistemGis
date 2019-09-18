@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\request;
 use App\User;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -25,15 +26,15 @@ class LoginController extends Controller
     /**
      * Where to redirect users after login.
      *
-     * @var string
-     */
-    protected $redirectTo = '/home';
+    //  * @var string
+    //  */
+    protected $redirectTo = '/dashboard';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    // /**
+    //  * Create a new controller instance.
+    //  *
+    //  * @return void
+    //  */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
@@ -45,12 +46,12 @@ class LoginController extends Controller
 
     public function postLoginForm(Request $request)
     {
-        if (\Auth::attempt(['email'=> $request->email, 'password'=> $request->password])) {
+        
+        if (Auth::attempt(['email'=> $request->email, 'password'=> $request->password])) {
             return redirect()->back();
     }
-
         return redirect()->route('dashboard');
 
     }
-
+    
 }

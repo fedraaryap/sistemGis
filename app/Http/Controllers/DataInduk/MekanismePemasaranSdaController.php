@@ -25,8 +25,9 @@ class MekanismePemasaranSdaController extends Controller
     public function store(Request $request)
     {
         $data = new MekanismePemasaranSda;  
+        $data->id_desa =$request->id_desa;
         $data->jenis_pemasaran_sda = $request->jenis_pemasaran_sda;
-        $data->kategori_pemasaran = $request->kategori_pemasaran;
+        $data->katagori_pemasaran = $request->katagori_pemasaran;
         $data->status_pemasaran = $request->status_pemasaran;
 
         $data->save();
@@ -45,8 +46,9 @@ class MekanismePemasaranSdaController extends Controller
     public function update(Request $request, $id)
     {
         $data = MekanismePemasaranSda::findorfail($id);
+        $data->id_desa =$request->id_desa;
         $data->jenis_pemasaran_sda = $request->jenis_pemasaran_sda;
-        $data->kategori_pemasaran = $request->kategori_pemasaran;
+        $data->katagori_pemasaran = $request->katagori_pemasaran;
         $data->status_pemasaran = $request->status_pemasaran;
         $data->save();
         return redirect()->route('mekpemsda');

@@ -2,12 +2,26 @@
 
 @section('content')
 <?php
-$AirBersih = [
+$AirBersih = [1=>' Mata air ', 
+2 =>'sumur Gali ', 
+3 =>'Sumur Pompa ',
+4 =>'Hidran Umum ',
+5 =>'PAM ',
+6 =>'Pipa ', 
+7 =>'Sungai  ',
+8 =>'Embung-Embung', 
+9 =>'Bak Penampungan air hujan ',
+10  =>'Beli dari Tangki swasta ',
+11  =>'Depot isi Ulang'
+ 
 ];
-$AirPanas = [
+$AirPanas = [1 =>' Gunung Berapi',
+2=>' Geyser'
 ];
 $ApakahBersih = [0=>'tidak',1=>'ada'];
 $ApakahPanas = [0=>'tidak',1=>'ada'];
+
+$desa = [1=>'Totoharjo',2=>'Hata',3=>'bakauhani',4=>'kelawi',5=>'semanak'];
 
 ?>
 
@@ -33,12 +47,20 @@ $ApakahPanas = [0=>'tidak',1=>'ada'];
 
             <!-- /.box-header -->
             <!-- form start -->
-          <form role="form" method="post" action="{{route('produkpert.simpan')}}">
+          <form role="form" method="post" action="{{route('statair.simpan')}}">
               {{ csrf_field() }}
               <div class="box-body">
                 <div class="form-group">
-                 <label for="a_air-panas">Apakah Air Bersih</label>
-                  <select class="form-control" name="a_air-panas">
+                      <label for="id_desa">Desa</label>
+                    <select class="form-control" name="id_desa">
+                      <option value="" selected disabled></option>
+                        @foreach($desa AS $desa =>$des )
+                    <option value="{{ $desa }}">{{ $des }}</option>
+                        @endforeach
+                </select>
+                  
+                 <label for="a_airpanas">Apakah Air Bersih</label>
+                  <select class="form-control" name="a_airpanas">
                     <option value="" selected disabled></option>
                   @foreach($ApakahBersih AS $ApakahBersih =>$abersih )
                     <option value="{{ $ApakahBersih }}">{{ $abersih }}</option>
@@ -53,8 +75,8 @@ $ApakahPanas = [0=>'tidak',1=>'ada'];
                   @endforeach
                 </select>
 
-                   <label for="a_air_panas">Apakah Sumber Air Panas</label>
-                  <select class="form-control" name="a_air_panas">
+                   <label for="a_airpanas">Apakah Sumber Air Panas</label>
+                  <select class="form-control" name="a_airpanas">
                     <option value="" selected disabled></option>
                   @foreach($ApakahPanas AS $ApakahPanas =>$apanas )
                     <option value="{{ $ApakahPanas }}">{{ $apanas }}</option>

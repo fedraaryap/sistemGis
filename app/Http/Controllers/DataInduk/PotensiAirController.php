@@ -25,6 +25,7 @@ class PotensiAirController extends Controller
     public function store(Request $request)
     {
         $data = new PotensiAir;
+        $data->id_desa =$request->id_desa;
         $data->jenis_potensi_air = $request->jenis_potensi_air;
         $data->status_potensi_air = $request->status_potensi_air;
         $data->save();
@@ -43,6 +44,7 @@ class PotensiAirController extends Controller
     public function update(Request $request, $id)
     {
         $data = PotensiAir::findorfail($id);
+        $data->id_desa =$request->id_desa;
         $data->jenis_potensi_air = $request->jenis_potensi_air;
         $data->status_potensi_air = $request->status_potensi_air;
         $data->save();

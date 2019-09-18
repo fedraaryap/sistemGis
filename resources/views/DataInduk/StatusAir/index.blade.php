@@ -32,6 +32,7 @@
             
             <tr>
                 <th>no</th>
+                <th>Desa</th>
                 <th>Jenis Air Bersih</th>
                 <th>Kondisi Air </th>
                 <th>Kualitas Air</th>
@@ -48,12 +49,13 @@
 
   <tr>
   <td>{{$nomor+1}}</td>
+  <td>{{(!is_null($dat->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
   <td>{{(!is_null($dat->id_air_bersih)?$dat->AirBersih->jenis_air_bersih:'-')}}</td>
   <td>{{(!is_null($dat->id_air_bersih)?$dat->AirBersih->kondisi_air:'-')}}</td>
   <td>{{(!is_null($dat->id_air_bersih)?$dat->AirBersih->kualitas_air:'-')}}</td>
   <td>{{(!is_null($dat->id_air_panas)?$dat->AirPanas->sumber_air_panas:'-')}}</td>
   <td>{{(!is_null($dat->id_air_panas)?$dat->AirPanas->Kepemilikan->kepemilikan:'-')}}</td>
-  <td>{{$dat->pemanfaatn}}</td>
+  <td>{{$dat->pemanfaatan}}</td>
   <td>
      <div class="hidden-sm hidden-xs btn-group">
             <a class="btn btn-xs btn-info" href="{{route('statair.edit',$dat->id_status_air)}}">

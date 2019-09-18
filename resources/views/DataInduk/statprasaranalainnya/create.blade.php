@@ -2,13 +2,11 @@
 
 @section('content')
 <?php
-$PrasaranaSarana = [
-];
-$SatuanPrasarana = [
-];
 $ApakahAda = [0=>'tidak',1=>'ada'];
-$Status = [
+$Status = [1=>'ada',0=>'tidak ada'
 ];
+
+$desa = [1=>'Totoharjo',2=>'Hata',3=>'bakauhani',4=>'kelawi',5=>'semanak'];
 
 ?>
 
@@ -34,23 +32,31 @@ $Status = [
 
             <!-- /.box-header -->
             <!-- form start -->
-          <form role="form" method="post" action="{{route('produkpert.simpan')}}">
+          <form role="form" method="post" action="{{route('statpraslainnya.simpan')}}">
               {{ csrf_field() }}
               <div class="box-body">
                 <div class="form-group">
+                  <label for="id_desa">Desa</label>
+                    <select class="form-control" name="id_desa">
+                      <option value="" selected disabled></option>
+                        @foreach($desa AS $desa =>$des )
+                    <option value="{{ $desa }}">{{ $des }}</option>
+                        @endforeach
+                </select>
+                  
                  <label for="id_prasarana_sarana">Macam Prasarana</label>
                   <select class="form-control" name="id_prasarana_sarana">
                     <option value="" selected disabled></option>
-                  @foreach($PrasaranaSarana AS $PrasaranaSarana =>$sar )
-                    <option value="{{ $PrasaranaSarana }}">{{ $sar }}</option>
+                  @foreach($Prasarana AS $prasaranaSarana =>$sar )
+                    <option value="{{ $sar->id_prasarana_sarana }}">{{ $sar->macam_prasaranan_sarana }}</option>
                   @endforeach
                 </select>
 
                    <label for="id_satuan_prasarana">Satuan Prasarana</label>
                   <select class="form-control" name="id_satuan_prasarana">
                     <option value="" selected disabled></option>
-                  @foreach($SatuanPrasarana AS $SatuanPrasarana =>$satuan )
-                    <option value="{{ $SatuanPrasarana }}">{{ $satuan }}</option>
+                  @foreach($SatuanPrasarana AS $patuanPrasarana =>$sat )
+                    <option value="{{ $sat->id_satuan_prasarana }}">{{ $sat->satuan_prasarana }}</option>
                   @endforeach
                 </select>
                  

@@ -15,4 +15,8 @@ class StatusJasaUsaha extends Model
 	{
 		return $this->belongsTo('App\Model\Referensi\EkonomiJasaUsaha','id_jasa_usaha','id_jasa_usaha');
 	}
+	public function Desa()
+	{
+		return $this->belongsTo('App\Model\DaftarDesa\ProfilDesa','id_desa','id_desa');
+	}
 }

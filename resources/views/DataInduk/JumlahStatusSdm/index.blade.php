@@ -32,6 +32,7 @@
           
             <tr>
                 <th>No</th>
+                <th>Desa</th>
                 <th>Kepadatan</th>
                 <th>Status Jumlah</th>
                 <th>aksi</th>
@@ -42,6 +43,7 @@
 
   <tr>
   <td>{{$nomor+1}}</td>
+  <td>{{(!is_null($dat->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
   <td>{{$dat->JumlahStatus->status_jumlah}}</td>
   <td>{{$dat->jumlah_sdm}}</td>
   

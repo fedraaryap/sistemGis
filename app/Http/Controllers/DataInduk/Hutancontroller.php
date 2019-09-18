@@ -5,6 +5,8 @@ namespace App\Http\Controllers\DataInduk;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\DataInduk\Hutan;
+use App\Model\Referensi\KondisiHutan;
+use App\Model\Referensi\DampakPengolahanHutan;
 
 class Hutancontroller extends Controller
 {
@@ -17,20 +19,18 @@ class Hutancontroller extends Controller
 
     public function create()
     {
-        $a_kondisi = Hutan::all();
-        $a_dampak = Hutan::all();
-        $kondisiHutan = Hutan::all();
-        $DampakHutan = Hutan::all();
-        $Kondisi = Hutan::all();
-        $Dampak = Hutan::all();
-        $Status = Hutan::all();
-        return view('DataInduk.Hutan.create',compact('a_kondisi','a_dampak','kondisiHutan','DampakHutan','Kondisi','Dampak','Status'));
+       
+        $kondisiHutan = KondisiHutan::all();
+        $DampakHutan = DampakPengolahanHutan::all();
+      
+        return view('DataInduk.Hutan.create',compact('kondisiHutan','DampakHutan'));
     }
 
 
     public function store(Request $request)
     {
         $data = new Hutan();
+        $data->id_desa =$request->id_desa;
         $data->id_dampak = $request->id_dampak;
         $data->id_kondisi = $request->id_kondisi;
         $data->status = $request->status;
@@ -57,6 +57,7 @@ class Hutancontroller extends Controller
     public function update(Request $request, $id)
     {
         $data = Hutan::findorfail($id);
+        $data->id_desa =$request->id_desa;
         $data->id_dampak = $request->id_dampak;
         $data->id_kondisi = $request->id_kondisi;
         $data->status = $request->status;

@@ -16,4 +16,9 @@ class LuasLahan extends Model
 	{
 		return $this->belongsTo('App\Model\Referensi\KeteranganLahan','id_ket_lahan','id_ket_lahan');
 	}
+	public function Desa()
+	{
+		return $this->belongsTo('App\Model\DaftarDesa\ProfilDesa','id_desa','id_desa');
+	}
+	
 }

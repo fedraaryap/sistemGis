@@ -1,9 +1,9 @@
 @extends('layouts.dashboard')
 @section('content')
-<?php
-$Batas = [
-1=>'Batas Utara',2=>'Batas Selatan',3=>'Batas Timur',4=>'Batas Barat'];
 
+<?php
+
+$desa = [1=>'Totoharjo',2=>'Hata',3=>'bakauhani',4=>'kelawi',5=>'semanak'];
 ?>
 
 <div class="content-header">
@@ -28,23 +28,31 @@ $Batas = [
             <form role="form" method="post" action="{{route('lemp.update',$data->id_batas_wilayah)}}">
               {{ csrf_field() }}
               {{method_field('PUT')}}
-              <div class="box-body">
+            
+            <div class="box-body">
                 <div class="form-group">
+                  <label for="id_desa">Desa</label>
+                  <select class="form-control" name="id_desa">
+                    <option value="" selected disabled></option>
+                  @foreach($desa AS $desa =>$des )
+                    <option value="{{ $desa }}">{{ $des }}</option>
+                  @endforeach
+                </select>
                <label for="id_batas">Batas</label>
                   <select class="form-control" name="id_batas">
-                  @foreach($Batas AS $Batas =>$bat )
-                    <option value="{{ $Batas }}">{{ $bat }}</option>
+                    <option value="" selected></option>
+                  @foreach($Batas AS $batas =>$bat )
+                    <option value="{{ $bat->id_batas }}">{{ $bat->batas }}</option>
                   @endforeach
                 </select>
 
 
                   <label for="batas_desa">Batas Desa</label>
-                  <input type="text" class="form-control" name="batas_desa" id="batas_desa" placeholder="masukan data" value="{{$data->batas_desa}}">
+                  <input type="text" class="form-control" name="batas_desa" id="batas_desa" placeholder="masukan data">
 
                    <label for="batas_kecamatan">Batas Kecamatan</label>
-                  <input type="text" class="form-control" name="batas_kecamatan" id="batas_kecamatan" placeholder="masukan data" value="{{$data->batas_kecamatan}}">
-                  
-                </div>
+                  <input type="text" class="form-control" name="batas_kecamatan" id="batas_kecamatan" placeholder="masukan data">
+              </div>
               </div>
               <!-- /.box-body -->
 

@@ -32,6 +32,7 @@
           
             <tr>
                 <th>No</th>
+                <th>Desa</th>
                 <th>Usia Mulai</th>
                 <th>Usia Akhir</th>
                 <th>Jenis Angkatan</th>
@@ -44,6 +45,7 @@
 
   <tr>
   <td>{{$nomor+1}}</td>
+  <td>{{(!is_null($dat->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
   <td>{{$dat->RangeAngkatan->usia_mulai}}</td>
   <td>{{$dat->RangeAngkatan->usia_akhir}}</td>
   <td>{{$dat->jenis_angkatan}}</td>

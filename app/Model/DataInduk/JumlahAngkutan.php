@@ -16,4 +16,10 @@ class JumlahAngkutan extends Model
 	{
 		return $this->belongsTo('App\Model\Referensi\JenisAngkutan','id_jenis_angkutan','id_jenis_angkutan');
 	}
+
+	public function Desa()
+	{
+		return $this->belongsTo('App\Model\DaftarDesa\ProfilDesa','id_desa','id_desa');
+	}
+
 }

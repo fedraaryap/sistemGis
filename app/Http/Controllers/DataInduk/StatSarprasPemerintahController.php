@@ -18,15 +18,18 @@ class StatSarprasPemerintahController extends Controller
     {
         $SarprasPemerintahan = StatusSarprasPemerintahan::all();
         $SatuanPrasarana = StatusSarprasPemerintahan::all();
-        return view('DataInduk.statussarpraspemerintah.create',compact('SarprasPemerintahan','SatuanPrasarana'));
+        $A_memiliki = StatusSarprasPemerintahan::all();
+        $Status = StatusSarprasPemerintahan::all();
+        return view('DataInduk.statussarpraspemerintah.create',compact('SarprasPemerintahan','SatuanPrasarana','A_memiliki','Status'));
     }
 
   
     public function store(Request $request)
     {
         $data = new StatusSarprasPemerintahan;
+        $data->id_desa =$request->id_desa;
         $data->id_satuan_prasarana = $request->id_satuan_prasarana;
-        $data->id_sarpas_pemerintahan = $request->id_sarpras_pemerintahan;
+        $data->id_sarpas_pemeritahan = $request->id_sarpas_pemeritahan;
         $data->jumlah = $request->jumlah;
         $data->a_memiliki_status = $request->a_memiliki_status;
         $data->status_sarpras = $request->status_sarpras;
@@ -40,15 +43,18 @@ class StatSarprasPemerintahController extends Controller
         $data = StatusSarprasPemerintahan::findorfail($id);
         $SarprasPemerintahan = StatusSarprasPemerintahan::all();
         $SatuanPrasarana = StatusSarprasPemerintahan::all();
-        return view('DataInduk.statussarpraspemerintah.edit',compact('data','SarprasPemerintahan','SatuanPrasarana'));
+         $A_memiliki = StatusSarprasPemerintahan::all();
+        $Status = StatusSarprasPemerintahan::all();
+        return view('DataInduk.statussarpraspemerintah.edit',compact('data','SarprasPemerintahan','SatuanPrasarana','A_memiliki','Status'));
     }
 
 
     public function update(Request $request, $id)
     {
         $data = StatusSarprasPemerintahan::findorfail($id);
+        $data->id_desa =$request->id_desa;
         $data->id_satuan_prasarana = $request->id_satuan_prasarana;
-        $data->id_sarpas_pemerintahan = $request->id_sarpras_pemerintahan;
+        $data->id_sarpas_pemeritahan = $request->id_sarpas_pemeritahan;
         $data->jumlah = $request->jumlah;
         $data->a_memiliki_status = $request->a_memiliki_status;
         $data->status_sarpras = $request->status_sarpras;

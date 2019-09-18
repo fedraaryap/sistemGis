@@ -32,6 +32,7 @@
             
             <tr>
                 <th>no</th>
+                <th>Desa</th>
                 <th>Jenis Ternak</th>
                 <th>Jumlah Populasi</th>
                 <th>Jumlah Pemilik</th>
@@ -45,6 +46,7 @@
 
   <tr>
   <td>{{$nomor+1}}</td>
+  <td>{{(!is_null($dat->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
   <td>{{$dat->JenisTernak->jenis_ternak}}</td>
   <td>{{$dat->jumlah_populasi}}</td>
   <td>{{$dat->jumlah_pemilik}}</td> 

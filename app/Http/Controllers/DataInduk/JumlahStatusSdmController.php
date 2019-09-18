@@ -5,6 +5,7 @@ namespace App\Http\Controllers\DataInduk;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\DataInduk\JumlahStatusSdm;
+use App\Model\Referensi\StatusJumlah;
 
 class JumlahStatusSdmController extends Controller
 {
@@ -17,7 +18,7 @@ class JumlahStatusSdmController extends Controller
 
     public function create()
     {
-        $JumlahStatus = JumlahStatusSdm::all();
+        $JumlahStatus = StatusJumlah::all();
         return view('DataInduk.JumlahStatusSdm.create',compact('JumlahStatus'));
     }
 
@@ -25,6 +26,7 @@ class JumlahStatusSdmController extends Controller
     public function store(Request $request)
     {
         $data = new JumlahStatusSdm;
+        $data->id_desa =$request->id_desa;
         $data->id_status = $request->id_status;
         $data->jumlah_sdm = $request->jumlah_sdm;
        
@@ -36,7 +38,7 @@ class JumlahStatusSdmController extends Controller
     public function edit($id)
     {
          $data = JumlahStatusSdm::findorfail($id);
-         $JumlahStatus =JumlahStatusSdm::all();
+         $JumlahStatus =StatusJumlah::all();
         return view('DataInduk.JumlahStatusSdm.edit',compact('data','JumlahStatus'));
     }
 
@@ -44,6 +46,7 @@ class JumlahStatusSdmController extends Controller
     public function update(Request $request, $id)
     {
         $data = JumlahStatusSdm::findorfail($id);
+        $data->id_desa =$request->id_desa;
         $data->id_status = $request->id_status;
         $data->jumlah_sdm = $request->jumlah_sdm;
        

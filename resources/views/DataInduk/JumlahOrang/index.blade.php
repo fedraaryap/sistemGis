@@ -32,6 +32,7 @@
           
             <tr>
                 <th>No</th>
+                <th>Desa</th>
                 <th>Nama Lembaga Ekonomi</th>
                 <th>Jumlah Pengurus</th>
                 <th>Jumlah Anggota</th>
@@ -45,11 +46,12 @@
 
   <tr>
   <td>{{$nomor+1}}</td>
+  <td>{{(!is_null($dat->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
   <td>{{$dat->LembagaEkonomi->nama_lembaga_ekonomi}}</td>
-  <td>{{$dat->jumlah_pengurus}}</td>
-  <td>{{$dat->jumlah_anggota}}</td>
-  <td>{{$dat->jumlah_kegiatan}}</td>
-  <td>{{$dat->jumlah_unit_lembaga}}</td>
+  <td>{{(!is_null($dat->jumlah_pengurus)?$dat->jumlah_pengurus:'-')}}</td>
+  <td>{{(!is_null($dat->jumlah_anggota)?$dat->jumlah_anggota:'-')}}</td>
+  <td>{{(!is_null($dat->jumlah_kegiatan)?$dat->jumlah_kegiatan:'-')}}</td>
+  <td>{{(!is_null($dat->jumlah_unit_lembaga)?$dat->jumlah_unit_lembaga:'-')}}</td>
   
   <td>
     <div class="hidden-sm hidden-xs btn-group">

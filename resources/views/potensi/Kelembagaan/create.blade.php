@@ -1,6 +1,9 @@
 @extends('layouts.dashboard')
 
 @section('content')
+
+
+
 <div class="content-header">
       <h1>
       Kelembagaan
@@ -16,31 +19,47 @@
         <div class="col-md-12">
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Input/Ubah kelembagaan</h3>
+              <h3 class="box-title">Lihat Data Kelembagaan</h3>
             </div>
 
             <!-- /.box-header -->
             <!-- form start -->
-          <form role="form" method="post" action="{{route('lem.simpan')}}">
+          <form role="form" method="post" action="{{route('kelembagaan.simpan')}}">
               {{ csrf_field() }}
+
+
+
               <div class="box-body">
                 <div class="form-group">
-                   <label for="nama_sekolah">Nama Tingkat Pendidikan</label>
-                  <select class="form-control" name="nama_sekolah">
-                    <option value="" selected></option>
-                  @foreach($data AS $dat)
-                    <option value="{{ $dat->lempendidikan->sekolah->nama_sekolah }}">{{$dat->lempendidikan->sekolah->nama_sekolah}} </option>
+               <label for="id_jumlah_lembaga">Lembaga Politik</label>
+                  <select class="form-control" name="id_jumlah_lembaga">
+                    <option value="" selected  ></option>
+                  @foreach($JumlahLembaga AS $politik =>$pol )
+                    <option value="{{ $pol->id_jumlah_lembaga }}">{{ $pol->id_jumlah_lembaga }}</option>
                   @endforeach
                 </select>
-                  <label for="jumlah_sekolah">jumlah_sekolah</label>
-                  <input type="number" class="form-control" name="jumlah_sekolah" id="jumlah_sekolah" placeholder="masukan data">
-                  <label for="jumlah_pengajar">jumlah_pengajar</label>
-                  <input type="number" class="form-control" name="jumlah_pengajar" id="jumlah_pengajar" placeholder="masukan data">
-                  <label for="jumlah_siswa">jumlah_siswa</label>
-                  <input type="number" class="form-control" name="jumlah_siswa" id="jumlah_siswa" placeholder="masukan data">
-                  <label for="kepemilikan">kepemilikan</label>
-                  <input type="text" class="form-control" name="kepemilikan" id="kepemilikan" placeholder="masukan data">
-                  
+
+           
+               <label for="id_keamanan">Lembaga Keamanan</label>
+                  <select class="form-control" name="id_keamanan">
+                    <option value="" selected disabled></option>
+                  @foreach($keamanan AS $keamanan =>$kel )
+                    <option value="{{ $kel->id_keamanan }}">{{ $kel->id_keamanan }}</option>
+                  @endforeach
+                </select>
+
+              
+               <label for="id_pendidikan">Lembaga Pendidikan</label>
+                  <select class="form-control" name="id_pendidikan">
+                    <option value="" selected ></option>
+                  @foreach($Lempendidikan AS $pendidikan =>$pen )
+                    <option value="{{ $pen->id_pendidikan }}">{{ $pen->id_pendidikan }}</option>
+                  @endforeach
+                </select>
+
+           
+              
+                 
           </form>
               <!-- /.box-body -->
               <div class="box-footer">
@@ -48,9 +67,13 @@
                 <a href="{{ url()->previous() }}" class="btn btn-danger">Batal</a>
               </div>
             </form>
-        </section>
+                 </div>
+        </div>
+      </div>
+
+       
   <!-- /.content -->
-  </div>
+</section>
 </div>
 
 

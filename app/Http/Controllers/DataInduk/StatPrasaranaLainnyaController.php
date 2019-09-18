@@ -5,6 +5,8 @@ namespace App\Http\Controllers\DataInduk;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\DataInduk\StatPrasaranaLainnya;
+use App\Model\Referensi\PrasaranaLainnya;
+use App\Model\Referensi\SatuanPrasarana;
 
 class StatPrasaranaLainnyaController extends Controller
 
@@ -17,17 +19,16 @@ class StatPrasaranaLainnyaController extends Controller
 
       public function create()
     {
-        $Prasarana = StatPrasaranaLainnya::all();
-        $SatuanPrasarana = StatPrasaranaLainnya::all();
-        $Status = StatPrasaranaLainnya::all();
-        $ApakahAda = StatPrasaranaLainnya::all();
-        return view('DataInduk.statprasaranalainnya.create',compact('Prasarana','SatuanPrasarana','Status','ApakahAda'));
+        $Prasarana = PrasaranaLainnya::all();
+        $SatuanPrasarana = SatuanPrasarana::all();
+        return view('DataInduk.statprasaranalainnya.create',compact('Prasarana','SatuanPrasarana'));
     }
 
   
     public function store(Request $request)
     {
         $data = new StatPrasaranaLainnya;
+        $data->id_desa =$request->id_desa;
         $data->id_prasarana_sarana = $request->id_prasarana_sarana;
         $data->id_satuan_prasarana = $request->id_satuan_prasarana;
         $data->jumlah = $request->jumlah;
@@ -41,17 +42,16 @@ class StatPrasaranaLainnyaController extends Controller
     public function edit($id)
     {
         $data = StatPrasaranaLainnya::findorfail($id);
-        $Prasarana = StatPrasaranaLainnya::all();
-        $SatuanPrasarana = StatPrasaranaLainnya::all();
-        $Status = StatPrasaranaLainnya::all();
-        $ApakahAda = StatPrasaranaLainnya::all();
-        return view('DataInduk.statprasaranalainnya.edit',compact('data','Prasarana','SatuanPrasarana','Status','ApakahAda'));
+        $Prasarana = PrasaranaLainnya::all();
+        $SatuanPrasarana = SatuanPrasarana::all();
+        return view('DataInduk.statprasaranalainnya.edit',compact('data','Prasarana','SatuanPrasarana'));
     }
 
 
     public function update(Request $request, $id)
     {
         $data = StatPrasaranaLainnya::findorfail($id);
+        $data->id_desa =$request->id_desa;
         $data->id_prasarana_sarana = $request->id_prasarana_sarana;
         $data->id_satuan_prasarana = $request->id_satuan_prasarana;
         $data->jumlah = $request->jumlah;

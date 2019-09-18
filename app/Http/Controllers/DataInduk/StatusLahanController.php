@@ -29,6 +29,7 @@ class StatusLahanController extends Controller
     public function store(Request $request)
     {
         $data = new StatusLahan();
+        $data->id_desa =$request->id_desa;
         $data->id_taman = $request->id_taman;
         $data->id_wisata = $request->id_wisata;
         $data->keberadaan = $request->keberadaan;
@@ -54,6 +55,7 @@ class StatusLahanController extends Controller
     public function update(Request $request, $id)
     {
         $data = StatusLahan::findorfail($id);
+        $data->id_desa =$request->id_desa;
         $data->id_taman = $request->id_taman;
         $data->id_wisata = $request->id_wisata;
         $data->keberadaan = $request->keberadaan;

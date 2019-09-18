@@ -20,6 +20,12 @@ class ProfilDesa extends Model
 	{
 		return $this->belongsTo('App\Model\DataInduk\PerangkatDesa','id_perangkat_desa','id_perangkat_desa');
 	}
+
+	public function Tahun()
+	{
+		return $this->belongsTo('App\Model\DataInduk\Tahun','id_tahun','id_tahun');
+	}
+	
 	
 	
 }

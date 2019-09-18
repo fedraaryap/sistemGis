@@ -15,4 +15,8 @@ class StatusSumberAir extends Model
 	{
 		return $this->belongsTo('App\Model\Referensi\SumberAir','id_sumber_air','id_sumber_air');
 	}
+	public function Desa()
+	{
+		return $this->belongsTo('App\Model\DaftarDesa\ProfilDesa','id_desa','id_desa');
+	}
 }

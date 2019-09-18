@@ -21,4 +21,9 @@ class Hutan extends Model
 	{
 		return $this->belongsTo('App\Model\Referensi\DampakPengolahanHutan','id_dampak','id_dampak');
 	}
+			public function Desa()
+	{
+		return $this->belongsTo('App\Model\DaftarDesa\ProfilDesa','id_desa','id_desa');
+	}
+
 }

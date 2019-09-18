@@ -25,8 +25,9 @@ class StatusSaranaTransportasiController extends Controller
     public function store(Request $request)
     {
         $data = new StatusSaranaTransportasi();
+        $data->id_desa =$request->id_desa;
         $data->id_sarana_transportasi = $request->id_sarana_transportasi;
-        $data->kebradaan_transportasi = $request->kebradaan_transportasi;
+        $data->keberadaan_transportasi = $request->keberadaan_transportasi;
         $data->jumlah = $request->jumlah;
         
         $data->save();
@@ -44,8 +45,9 @@ class StatusSaranaTransportasiController extends Controller
     public function update(Request $request, $id)
     {
         $data = StatusSaranaTransportasi::findorfail($id);
+        $data->id_desa =$request->id_desa;
         $data->id_sarana_transportasi = $request->id_sarana_transportasi;
-        $data->kebradaan_transportasi = $request->kebradaan_transportasi;
+        $data->keberadaan_transportasi = $request->keberadaan_transportasi;
         $data->jumlah = $request->jumlah;
         $data->save();
         return redirect()->route('stattrans');

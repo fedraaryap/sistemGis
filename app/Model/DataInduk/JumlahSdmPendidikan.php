@@ -16,4 +16,8 @@ class JumlahSdmPendidikan extends Model
 	{
 		return $this->belongsTo('App\Model\Referensi\StatusPendidikan','id_status_pendidikan','id_status_pendidikan');
 	}
+	public function Desa()
+	{
+		return $this->belongsTo('App\Model\DaftarDesa\ProfilDesa','id_desa','id_desa');
+	}
 }

@@ -20,7 +20,7 @@
 
     <form class="form-signin" method="POST" action="{{route('register')}}">
       {{csrf_field()}}
-      <img class="mb-4" src="img/lampung.png" alt="" width="100" height="100">
+      <img class="mb-4" src="img/logo1.png" alt="" width="100" height="100">
       <h1 class="h3 mb-3 font-weight-normal">SISTEM INFORMASI GEOGRAFIS</h1>
       <label for="inputEmail" class="sr-only">Email address</label>
       <input type="text" name="name" id="inputName" class="form-control" placeholder="Plase insert your name" required autofocus>
@@ -33,7 +33,7 @@
       <div class="checkbox mb-3">
 
       <button class="btn btn-lg btn-primary btn-block" type="submit">register</button>
-      <a href= "{{url('login')}}" class="btn btn-lg btn-primary btn-block">login</a>
+     
       
       <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
     </form>

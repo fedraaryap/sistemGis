@@ -13,6 +13,11 @@ class Wilayah extends Model
 
 	public function LvWil()
 	{
-		return $this->belongsTo('App\Model\Referensi\LvNamaWilayah','id-lv_wilayah','id_level_wilayah');
+		return $this->belongsTo('App\Model\Referensi\LvNamaWilayah','id_lv_wil','id_lv_wil');
+	}
+
+		public function Wilayah()
+	{
+		return $this->belongsTo('App\Model\Referensi\LvNamaWilayah','wil_id_wilayah','id_lv_wil');
 	}
 }

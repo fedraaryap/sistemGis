@@ -32,6 +32,7 @@
           
             <tr>
                 <th>No</th>
+                <th>Desa</th>
                 <th>Batas</th>
                 <th>Batas Desa</th>
                 <th>Batas Kecamatan</th>
@@ -43,6 +44,7 @@
 
   <tr>
   <td>{{$nomor+1}}</td>
+  <td>{{(!is_null($dat->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
   <td>{{$dat->Batas->batas}}</td>
   <td>{{$dat->batas_desa}}</td>
   <td>{{$dat->batas_kecamatan}}</td>

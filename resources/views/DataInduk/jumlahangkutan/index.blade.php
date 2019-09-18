@@ -32,6 +32,7 @@
           
             <tr>
                 <th>No</th>
+                <th>Desa</th>
                 <th>Jenis Angkutan</th>
                 <th>Jumlah Pemilik</th>
                 <th>Jumlah Kapasitas</th>
@@ -45,11 +46,14 @@
 
   <tr>
   <td>{{$nomor+1}}</td>
+  <td>{{(!is_null($dat->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
   <td>{{$dat->JenisAngkutan->jenis_angkutan}}</td>
-  <td>{{$dat->jumlah_pemilik}}</td>
-  <td>{{$dat->jumlah_kapasitas}}</td>
-  <td>{{$dat->jumlah_unit_angkutan}}</td>
-  <td>{{$dat->tenaga_kerja_angkutan}}</td>
+  <td>{{(!is_null($dat->jumlah_pemilik)?$dat->jumlah_pemilik:'-')}}</td>
+  <td>{{(!is_null($dat->jumlah_kapasitas)?$dat->jumlah_kapasitas:'-')}}</td>
+  <td>{{(!is_null($dat->jumlah_unit_angkutan)?$dat->jumlah_unit_angkutan:'-')}}</td>
+  <td>{{(!is_null($dat->tenaga_kerja_angkutan)?$dat->tenaga_kerja_angkutan:'-')}}</td>
+  
+  
   
   <td>
     <div class="hidden-sm hidden-xs btn-group">

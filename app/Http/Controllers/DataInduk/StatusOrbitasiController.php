@@ -27,6 +27,7 @@ class StatusOrbitasiController extends Controller
     public function store(Request $request)
     {
         $data = new StatusOrbitasi();
+        $data->id_desa =$request->id_desa;
         $data->id_satuan_orbitasi = $request->id_satuan_orbitasi;
         $data->id_orbitasi = $request->id_orbitasi;
         $data->status_angka = $request->status_angka;
@@ -46,6 +47,7 @@ class StatusOrbitasiController extends Controller
     public function update(Request $request, $id)
     {
         $data = StatusOrbitasi::findorfail($id);
+        $data->id_desa =$request->id_desa;
         $data->id_satuan_orbitasi = $request->id_satuan_orbitasi;
         $data->id_orbitasi = $request->id_orbitasi;
         $data->status_angka = $request->status_angka;

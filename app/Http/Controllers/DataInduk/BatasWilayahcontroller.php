@@ -5,6 +5,7 @@ namespace App\Http\Controllers\DataInduk;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\DataInduk\BatasWilayah;
+use App\Model\Referensi\Batas;
 
 class BatasWilayahcontroller extends Controller
 {
@@ -18,7 +19,7 @@ class BatasWilayahcontroller extends Controller
 
     public function create()
     {
-        $Batas = BatasWilayah::all();
+        $Batas = Batas::all();
         return view('DataInduk.BatasWilayah.create',compact('Batas'));
     }
 
@@ -26,6 +27,7 @@ class BatasWilayahcontroller extends Controller
     public function store(Request $request)
     {
         $data = new BatasWilayah();
+        $data->id_desa =$request->id_desa;
         $data->id_batas = $request->id_batas;
         $data->batas_desa = $request->batas_desa;
         $data->batas_kecamatan = $request->batas_kecamatan;
@@ -37,7 +39,7 @@ class BatasWilayahcontroller extends Controller
     public function edit($id)
     {
          $data = BatasWilayah::findorfail($id);
-         $Batas = BatasWilayah::all();
+         $Batas = Batas::all();
         return view('DataInduk.BatasWilayah.edit',compact('data','Batas'));
     }
 
@@ -45,6 +47,7 @@ class BatasWilayahcontroller extends Controller
     public function update(Request $request, $id)
     {
         $data = BatasWilayah::findorfail($id);
+        $data->id_desa =$request->id_desa;
         $data->id_batas = $request->id_batas;
         $data->batas_desa = $request->batas_desa;
         $data->batas_kecamatan = $request->batas_kecamatan;

@@ -16,4 +16,8 @@ class JumlahProduksi extends Model
 	{
 		return $this->belongsTo('App\Model\Referensi\Produksi','id_produksi','id_produksi');
 	}
+	public function Desa()
+	{
+		return $this->belongsTo('App\Model\DaftarDesa\ProfilDesa','id_desa','id_desa');
+	}
 }

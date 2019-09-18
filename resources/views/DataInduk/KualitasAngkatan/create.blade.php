@@ -2,10 +2,23 @@
 
 @section('content')
 <?php
-$RangeAngkatan = [
+$RangeAngkatan = [1=>'0-1',
+2=>'1-3',
+3=>'3-5',
+4=>'6-7',
+5=>'7-12',
+6=>'12-15',
+7=>'15-18',
+8=>'18-60',
+9=>'3-6',
+10=>'7-18',
+11=>'18-56',
+12=>'12-56'
 ];
-$JenisKelamin = [
+$JenisKelamin = [1=>'Laki-Laki',2=>'Perempuan'
 ];
+
+$desa = [1=>'Totoharjo',2=>'Hata',3=>'bakauhani',4=>'kelawi',5=>'semanak'];
 
 ?>
 
@@ -35,6 +48,14 @@ $JenisKelamin = [
               {{ csrf_field() }}
               <div class="box-body">
                 <div class="form-group">
+                          <label for="id_desa">Desa</label>
+                  <select class="form-control" name="id_desa">
+                    <option value="" selected disabled></option>
+                  @foreach($desa AS $desa =>$des )
+                    <option value="{{ $desa }}">{{ $des }}</option>
+                  @endforeach
+                </select>
+
                <label for="id_range">Usia</label>
                   <select class="form-control" name="id_range">
                     <option value="" selected disabled></option>

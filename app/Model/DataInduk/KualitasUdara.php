@@ -16,4 +16,8 @@ class KualitasUdara extends Model
 	{
 		return $this->belongsTo('App\Model\Referensi\SumberPencemaran','id_sumber','id_sumber');
 	}
+	public function Desa()
+	{
+		return $this->belongsTo('App\Model\DaftarDesa\ProfilDesa','id_desa','id_desa');
+	}
 }

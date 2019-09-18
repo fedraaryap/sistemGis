@@ -16,4 +16,8 @@ class JumlahPemilikLahan extends Model
 	{
 		return $this->belongsTo('App\Model\Referensi\RangeLahan','id_range_lahan','id_range_lahan');
 	}
+	public function Desa()
+	{
+		return $this->belongsTo('App\Model\DaftarDesa\ProfilDesa','id_desa','id_desa');
+	}
 }

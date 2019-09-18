@@ -20,4 +20,9 @@ class StatusLahan extends Model
 	{
 		return $this->belongsTo('App\Model\Referensi\PotensiWisata','id_wisata','id_wisata');
 	}
+
+	public function Desa()
+	{
+		return $this->belongsTo('App\Model\DaftarDesa\ProfilDesa','id_desa','id_desa');
+	}
 }

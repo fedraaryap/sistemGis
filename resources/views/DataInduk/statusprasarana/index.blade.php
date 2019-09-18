@@ -32,6 +32,7 @@
           
             <tr>
                 <th>No</th>
+                <th>Desa</th>
                 <th>Jenis Prasarana</th>
                 <th>Satuan Prasarana</th>
                 <th>Kondisi Prasarana</th>
@@ -44,10 +45,11 @@
 
   <tr>
   <td>{{$nomor+1}}</td>
-  <td>{{$dat->JenisPrasarana->jenis_prasarana_sarana}}</td>
-  <td>{{$dat->SatuanPrasarana->satuan_prasarana}}</td>
-  <td>{{$dat->kondisi_prasarana_sarana}}</td>
-  <td>{{$dat->angka_kondisi}}</td>
+  <td>{{(!is_null($dat->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
+   <td>{{(!is_null($dat->id_jenis_prasarana)?$dat->JenisPrasarana->jenis_prasarana_sarana:'-')}}</td>
+   <td>{{(!is_null($dat->id_satuan_prasarana)?$dat->SatuanPrasarana->satuan_prasarana:'-')}}</td>
+   <td>{{(!is_null($dat->kondisi_prasarana_sarana)?$dat->kondisi_prasarana_sarana:'-')}}</td>
+  <td>{{(!is_null($dat->angka_kondisi)?$dat->angka_kondisi:'-')}}</td>
  
   
   <td>

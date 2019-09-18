@@ -26,18 +26,19 @@
 
                 <div class="row">
                 <div class="col-xs-12">
-        <table id="simple-table" class="table table-striped table-bordered table-hover">
+        <table id="simple-table4" class="table table-striped table-bordered table-hover">
         <thead>
           <a href="{{route('lemp.simpan')}}" class=" btn btn-sm btn-primary">Tambah Lembaga Pendidikan</a>
             
             <tr>
                 <th>no</th>
+                <th>Desa</th>
                 <th>Jenis Sekolah</th>
-                <th>Nama tingkat pendidikan</th>
+                <th>tingkat pendidikan</th>
                 <th>Status</th>
                 <th>Jumlah sekolah</th>
                 <th>Jumlah Pengajar</th>
-                <th>Jumlah Siswa</th>
+                <th>Siswa</th>
                 <th>kepemilikan</th>
                 <th>Aksi</th>
                
@@ -45,16 +46,25 @@
         </thead>
 <tbody>  
   @foreach($data as $nomor=> $dat)
-
   <tr>
   <td>{{$nomor+1}}</td>
+  <td>{{(!is_null($dat->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
   <td>{{$dat->Sekolah->jenisPendidikan->jenis_pedidikan}}</td>
   <td>{{$dat->Sekolah->nama_sekolah}}</td>
-  <td>{{$dat->status_sekolah}}
+  @if($dat->status_sekolah == 1)
+    <td>Terdaftar</td>
+  @elseif($dat->status_sekolah == 0)
+    <td>Tidak Terdaftar</td>
+  @endif()
   <td>{{$dat->jumlah_sekolah}}</td>
   <td>{{$dat->jumlah_pengajar}}</td>
   <td>{{$dat->jumlah_siswa}}</td>
-  <td>{{$dat->kepemilikan}}</td>
+   @if($dat->kepemilikan == 1)
+    <td>Pemerintah</td>
+  @elseif($dat->kepemilikan == 2)
+    <td>Swasta</td>
+  @endif()
+  
 
  <td>
     <div class="hidden-sm hidden-xs btn-group">

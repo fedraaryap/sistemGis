@@ -32,6 +32,7 @@
           
             <tr>
                 <th>No</th>
+                <th>Desa</th>
                 <th>Tingkat Kebisingan</th>
                 <th>Dampak Kebisingan</th>
                 <th>Sumber Kebisingan</th>
@@ -44,6 +45,7 @@
 
   <tr>
   <td>{{$nomor+1}}</td>
+  <td>{{(!is_null($dat->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
   <td>{{$dat->TingkatKebisingan->tingkat_kebisingan}}</td>
   <td>{{$dat->dampak_kebisingan}}</td>
   <td>{{$dat->sumber_kebisingan}}</td>

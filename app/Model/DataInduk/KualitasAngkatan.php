@@ -16,4 +16,8 @@ class KualitasAngkatan extends Model
 	{
 		return $this->belongsTo('App\Model\Referensi\RangeUsia','id_range','id_range');
 	}
+	public function Desa()
+	{
+		return $this->belongsTo('App\Model\DaftarDesa\ProfilDesa','id_desa','id_desa');
+	}
 }

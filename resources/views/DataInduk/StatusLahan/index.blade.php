@@ -32,6 +32,7 @@
             
             <tr>
                 <th>No</th>
+                <th>Desa</th>
                 <th>Jenis Taman</th>
                 <th>Lokasi Wisata </th>
                 <th>Keberadaan</th>
@@ -47,6 +48,7 @@
 
   <tr>
   <td>{{$nomor+1}}</td>
+  <td>{{(!is_null($dat->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
   <td>{{(!is_null($dat->id_taman)?$dat->Taman->jenis_taman:'-')}}</td>
   <td>{{(!is_null($dat->id_wisata)?$dat->Wisata->lokasi_wisata:'-')}}</td>
   <td>{{$dat->keberadaan}}</td>

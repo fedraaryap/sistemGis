@@ -32,6 +32,7 @@
             
             <tr>
                 <th>no</th>
+                <th>Desa</th>
                 <th>Jenis Potensi Air</th>
                 <th>Status Potensi Air</th>
                 <th>Aksi</th>
@@ -44,6 +45,7 @@
 
   <tr>
   <td>{{$nomor+1}}</td>
+  <td>{{(!is_null($dat->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
   <td>{{$dat->jenis_potensi_air}}</td>
   <td>{{$dat->status_potensi_air}}</td>
   <td>

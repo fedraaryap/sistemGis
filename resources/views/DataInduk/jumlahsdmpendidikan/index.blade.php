@@ -26,12 +26,13 @@
 
                 <div class="row">
                 <div class="col-xs-12">
-        <table id="simple-table" class="table table-striped table-bordered table-hover">
+        <table id='#simple-table4' class="table table-striped table-bordered table-hover">
         <thead>
            <a href="{{route('jumsdmpend.simpan')}}" class=" btn btn-sm btn-primary">Tambah Jumlah Sdm Pendidikan</a>
           
             <tr>
                 <th>No</th>
+                <th>Desa</th>
                 <th>Tingkat Pendidikan</th>
                 <th>Usia Mulai</th>
                 <th>Usia Akhir</th>
@@ -45,6 +46,7 @@
 
   <tr>
   <td>{{$nomor+1}}</td>
+  <td>{{(!is_null($dat->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
   <td>{{$dat->StatusPendidikan->tingkat_pendidikan}}</td>
   <td>{{$dat->StatusPendidikan->RangeUsia->usia_mulai}}</td>
   <td>{{$dat->StatusPendidikan->RangeUsia->usia_akhir}}</td>

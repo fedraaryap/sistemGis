@@ -33,6 +33,7 @@
           
             <tr>
                 <th>No</th>
+                <th>Desa</th>
                 <th>Keterangan Lahan</th>
                 <th>Pemilik Lahan</th>
                 <th>Luas Lahan</th>
@@ -44,6 +45,7 @@
 
   <tr>
   <td>{{$nomor+1}}</td>
+  <td>{{(!is_null($dat->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
   <td>{{$dat->KetLahan->ket_lahan}}</td>
   <td>{{$dat->pemilik_lahan}}</td>
   <td>{{$dat->luas_lahan}}</td>

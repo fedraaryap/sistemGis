@@ -2,8 +2,8 @@
 
 @section('content')
 <?php
-$SdmDesa = [
-];
+
+$desa = [1=>'Totoharjo',2=>'Hata',3=>'bakauhani',4=>'kelawi',5=>'semanak'];
 
 $JenisKelamin = ['P','L'];
 ?>
@@ -34,11 +34,19 @@ $JenisKelamin = ['P','L'];
               {{ csrf_field() }}
               <div class="box-body">
                 <div class="form-group">
+                         <label for="id_desa">Desa</label>
+                  <select class="form-control" name="id_desa">
+                    <option value="" selected disabled></option>
+                  @foreach($desa AS $desa =>$des )
+                    <option value="{{ $desa }}">{{ $des }}</option>
+                  @endforeach
+                </select>
+                
                <label for="id_sdm_desa">SDM Desa</label>
                   <select class="form-control" name="id_sdm_desa">
                     <option value="" selected disabled></option>
-                  @foreach($SdmDesa AS $SdmDesa =>$sdm )
-                    <option value="{{ $SdmDesa }}">{{ $sdm }}</option>
+                  @foreach($SdmDesa AS $sdmdesa =>$sdm )
+                    <option value="{{ $sdm->id_sdm_desa }}">{{ $sdm->sdm_desa }}</option>
                   @endforeach
                 </select>
 

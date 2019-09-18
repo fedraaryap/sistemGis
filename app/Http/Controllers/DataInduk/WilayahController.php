@@ -19,16 +19,16 @@ class WilayahController extends Controller
     {
       
         $LvWil = Wilayah::all();
-        return view('DataInduk.Wilayah.create',compact('Taman','LvWil'));
+        $Wilayah = Wilayah::all();
+        return view('DataInduk.Wilayah.create',compact('Wilayah','LvWil'));
     }
     
     public function store(Request $request)
     {
         $data = new Wilayah();
         $data->id_lv_wil = $request->id_lv_wil;
+        $data->wil_id_wilayah = $request->wil_id_wilayah;
         $data->id_induk = $request->id_induk;
-        $data->latitude = $request->latitude;
-        $data->longitude = $request->longitude;
         $data->nama_wil = $request->nama_wil;
         $data->save();
         return redirect()->route('wilayah');
@@ -45,9 +45,8 @@ class WilayahController extends Controller
     {
         $data = Wilayah::findorfail($id);
         $data->id_lv_wil = $request->id_lv_wil;
+        $data->wil_id_wilayah = $request->wil_id_wilayah;
         $data->id_induk = $request->id_induk;
-        $data->latitude = $request->latitude;
-        $data->longitude = $request->longitude;
         $data->nama_wil = $request->nama_wil;
         $data->save();
         return redirect()->route('wilayah');

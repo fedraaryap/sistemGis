@@ -38,11 +38,18 @@ $Status = [0=>'Buruk',1=>'Baik'];
                 
               <div class="box-body">
                 <div class="form-group">
-               <label for="id_kondisi">Kondisi Hutan</label>
+              <label for="id_desa">Desa</label>
+                  <select class="form-control" name="id_desa">
+                    <option value="" selected disabled></option>
+                  @foreach($desa AS $desa =>$des )
+                    <option value="{{ $desa }}">{{ $des }}</option>
+                  @endforeach
+                </select>
+               <label for="id_Kondisi">Kondisi Hutan</label>
                   <select class="form-control" name="id_kondisi">
                     <option value="" selected  ></option>
-                  @foreach($Kondisi AS $Kondisi =>$kon )
-                    <option value="{{ $Kondisi }}">{{ $kon }}</option>
+                  @foreach($kondisiHutan AS $Kondisi =>$kon )
+                    <option value="{{ $kon->id_kondisi }}">{{ $kon->jenis_hutan }}</option>
                   @endforeach
                 </select>
 
@@ -59,13 +66,13 @@ $Status = [0=>'Buruk',1=>'Baik'];
                <label for="id_dampak">Dampak Pengolahan Hutan</label>
                   <select class="form-control" name="id_dampak">
                     <option value="" selected ></option>
-                  @foreach($Dampak AS $Dampak =>$dam )
+                  @foreach($DampakHutan AS $Dampak =>$dam )
                     <option value="{{ $Dampak }}">{{ $dam }}</option>
                   @endforeach
                 </select>
 
            
-               <label for="a_dampak_pengolah">Dampak</label>
+               <label for="a_dampak_pengolahan">Dampak</label>
                   <select class="form-control" name="a_dampak_pengolahan">
                     <option value="" selected disabled></option>
                   @foreach($a_dampak AS $a_dampak =>$adam )

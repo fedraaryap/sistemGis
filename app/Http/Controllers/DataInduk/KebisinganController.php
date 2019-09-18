@@ -5,6 +5,7 @@ namespace App\Http\Controllers\DataInduk;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\DataInduk\Kebisingan;
+use App\Model\Referensi\TingkatKebisingan;
 
 class KebisinganController extends Controller
 {
@@ -17,7 +18,7 @@ class KebisinganController extends Controller
 
     public function create()
     {
-        $TingkatKebisingan = Kebisingan::all();
+        $TingkatKebisingan = TingkatKebisingan::all();
         return view('DataInduk.kebisingan.create',compact('TingkatKebisingan'));
     }
 
@@ -25,6 +26,7 @@ class KebisinganController extends Controller
     public function store(Request $request)
     {
         $data = new Kebisingan;
+        $data->id_desa =$request->id_desa;
         $data->id_tingkat_kebisingan = $request->id_tingkat_kebisingan;
         $data->dampak_kebisingan = $request->dampak_kebisingan;
         $data->sumber_kebisingan = $request->sumber_kebisingan;
@@ -37,7 +39,7 @@ class KebisinganController extends Controller
     public function edit($id)
     {
          $data = Kebisingan::findorfail($id);
-         $TingkatKebisingan =Kebisingan::all();
+         $TingkatKebisingan =TingkatKebisingan::all();
         return view('DataInduk.kebisingan.edit',compact('data','TingkatKebisingan'));
     }
 
@@ -45,6 +47,7 @@ class KebisinganController extends Controller
     public function update(Request $request, $id)
     {
         $data = Kebisingan::findorfail($id);
+        $data->id_desa =$request->id_desa;
         $data->id_tingkat_kebisingan = $request->id_tingkat_kebisingan;
         $data->dampak_kebisingan = $request->dampak_kebisingan;
         $data->sumber_kebisingan = $request->sumber_kebisingan;

@@ -32,10 +32,10 @@
             
             <tr>
                 <th>no</th>
+                <th>Desa</th>
                 <th>Keterangan Pakan Ternak</th>
                 <th>Luas/Jumlah</th>
                 <th>Kepemilikan</th>
-                <th>Status Pemilikan</th>
                 <th>Aksi</th>
                 
                
@@ -46,10 +46,11 @@
 
   <tr>
   <td>{{$nomor+1}}</td>
+  <td>{{(!is_null($dat->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
   <td>{{$dat->ket_pakan_ternak}}</td>
   <td>{{$dat->jumlah_luas}}</td>
   <td>{{$dat->Kepemilikan->kepemilikan}}</td>
-  <td>{{$dat->Kepemilikan->status_kepemilikan}}</td> 
+
   <td>
      <div class="hidden-sm hidden-xs btn-group">
             <a class="btn btn-xs btn-info" href="{{route('pakan.edit',$dat->id_pakan_ternak)}}">

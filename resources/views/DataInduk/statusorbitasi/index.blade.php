@@ -33,6 +33,7 @@
           
             <tr>
                 <th>No</th>
+                <th>Desa</th>
                 <th>Orbitasi</th>
                 <th>Satuan Orbitasi</th>
                 <th>Status Angka</th>
@@ -44,9 +45,10 @@
 
   <tr>
   <td>{{$nomor+1}}</td>
-  <td>{{$dat->Orbitasi->orbitasi}}</td>
-  <td>{{$dat->SatuanOrbitasi->satuan_orbitasi}}</td>
-  <td>{{$dat->status_angka}}</td>
+  <td>{{(!is_null($dat->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
+  <td>{{(!is_null($dat->id_orbitasi)?$dat->Orbitasi->orbitasi:'-')}}</td>
+  <td>{{(!is_null($dat->id_satuan_orbitasi)?$dat->SatuanOrbitasi->orbitasi:'-')}}</td>
+  <td>{{(!is_null($dat->status_angka)?$dat->status_angka:'-')}}</td>
   <td>
    <div class="hidden-sm hidden-xs btn-group">
             <a class="btn btn-xs btn-info" href="{{route('statorbitasi.edit',$dat->id_status_orbitasi)}}">

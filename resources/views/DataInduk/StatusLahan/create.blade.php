@@ -2,13 +2,27 @@
 
 @section('content')
 <?php
-$Taman = [
+$Taman = [1 =>'Taman desa',
+2 =>'Tanah Adat',
+3 =>'Tanah Kas Desa'
 ];
-$Wisata = [
+$Wisata = [1 =>' Laut',
+2=>' Danau',
+3 =>'Goa',
+4 =>'Gunung',
+5 =>'Agrowisata',
+6 =>'Hutan Khusus',
+7=>' Cagar budaya',
+8=>' Arung Jeram',
+9=>' Situs Sejarah dan Museum',
+10 =>' Air Terjun'
 ];
 $Ataman = [0=>'tidak',1=>'ada'];
 $Awisata = [0=>'tidak',1=>'ada'];
 $Keberadaan = [0=>'tidak',1=>'ada'];
+
+$desa = [1=>'Totoharjo',2=>'Hata',3=>'bakauhani',4=>'kelawi',5=>'semanak'];
+
 ?>
 
 
@@ -33,10 +47,19 @@ $Keberadaan = [0=>'tidak',1=>'ada'];
 
             <!-- /.box-header -->
             <!-- form start -->
-          <form role="form" method="post" action="{{route('produkpert.simpan')}}">
+          <form role="form" method="post" action="{{route('statlahan.simpan')}}">
               {{ csrf_field() }}
               <div class="box-body">
                 <div class="form-group">
+                         <label for="id_desa">Desa</label>
+                    <select class="form-control" name="id_desa">
+                      <option value="" selected disabled></option>
+                        @foreach($desa AS $desa =>$des )
+                    <option value="{{ $desa }}">{{ $des }}</option>
+                        @endforeach
+                </select>
+
+                  
                  <label for="a_taman">Apakah Taman</label>
                   <select class="form-control" name="a_taman">
                     <option value="" selected disabled></option>

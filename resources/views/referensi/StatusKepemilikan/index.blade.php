@@ -26,7 +26,7 @@
 
                 <div class="row">
                 <div class="col-xs-12">
-        <table id="simple-table" class="table table-striped table-bordered table-hover">
+        <table id="simple-table1" class="table table-striped table-bordered table-hover">
         <thead>
            <a href="{{route('kepemilikan.simpan')}}" class=" btn btn-sm btn-primary">Tambah Status Kepemilikan</a>
             <tr>

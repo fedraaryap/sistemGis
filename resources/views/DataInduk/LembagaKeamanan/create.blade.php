@@ -2,10 +2,9 @@
 
 @section('content')
 <?php
-$JenisKeamanan = [
-];
 $Status = [ 0=>'tidak ada',1=>'ada'
 ];
+$desa = [1=>'Totoharjo',2=>'Hata',3=>'bakauhani',4=>'kelawi',5=>'semanak'];
 ?>
 
 
@@ -34,11 +33,18 @@ $Status = [ 0=>'tidak ada',1=>'ada'
               {{ csrf_field() }}
               <div class="box-body">
                 <div class="form-group">
+                      <label for="id_desa">Desa</label>
+                  <select class="form-control" name="id_desa">
+                    <option value="" selected disabled></option>
+                  @foreach($desa AS $desa =>$des )
+                    <option value="{{ $desa }}">{{ $des }}</option>
+                  @endforeach
+                </select>
                <label for="id_jenis_keamanan">Jenis Keamanan</label>
                   <select class="form-control" name="id_jenis_keamanan">
                     <option value="" selected disabled></option>
-                  @foreach($JenisKeamanan AS $JenisKeamanan =>$kualitas )
-                    <option value="{{ $SumberKualitas }}">{{ $kualitas }}</option>
+                  @foreach($JenisKeamanan AS $jenis =>$kua )
+                    <option value="{{ $kua->id_jenis_keamanan }}">{{ $kua->jenis_keamanan }}</option>
                   @endforeach
                 </select>
 
@@ -47,8 +53,8 @@ $Status = [ 0=>'tidak ada',1=>'ada'
                   <input type="number" class="form-control" name="jumlah_anggota" id="jumlah_anggota" placeholder="masukan data">
                     <label for="jumlah_poskamling">Jumlah Poskamling</label>
                   <input type="number" class="form-control" name="jumlah_poskamling" id="jumlah_poskamling" placeholder="masukan data">
-                    <label for="jumlah_kegiatan">Jumlah Kegiatan</label>
-                  <input type="number" class="form-control" name="jumlah_kegiatan" id="jumlah_kegiatan" placeholder="masukan data">
+                    <label for="jumlah_kegiaatan">Jumlah Kegiatan</label>
+                  <input type="number" class="form-control" name="jumlah_kegiaatan" id="jumlah_kegiaatan" placeholder="masukan data">
                     <label for="nama_organisasi_induk">Nama organisasi Induk</label>
                   <input type="text" class="form-control" name="nama_organisasi_induk" id="nama_organisasi_induk" placeholder="masukan data">
 

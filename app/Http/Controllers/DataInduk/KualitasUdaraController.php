@@ -5,6 +5,7 @@ namespace App\Http\Controllers\DataInduk;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\DataInduk\KualitasUdara;
+use App\Model\Referensi\SumberPencemaran;
 
 class KualitasUdaraController extends Controller
 {
@@ -17,7 +18,7 @@ class KualitasUdaraController extends Controller
 
     public function create()
     {
-        $SumberKualitas = KualitasUdara::all();
+        $SumberKualitas = SumberPencemaran::all();
         return view('DataInduk.KualitasUdara.create',compact('SumberKualitas'));
     }
 
@@ -25,6 +26,7 @@ class KualitasUdaraController extends Controller
     public function store(Request $request)
     {
         $data = new KualitasUdara;
+        $data->id_desa =$request->id_desa;
         $data->id_sumber = $request->id_sumber;
         $data->jumlah_lokasi_pencemaran = $request->jumlah_lokasi_pencemaran;
         $data->politan_pencemaran = $request->politan_pencemaran;
@@ -38,7 +40,7 @@ class KualitasUdaraController extends Controller
     public function edit($id)
     {
          $data = KualitasUdara::findorfail($id);
-         $SumberKualitas =KualitasUdara::all();
+         $SumberKualitas =SumberPencemaran::all();
         return view('DataInduk.KualitasUdara.edit',compact('data','SumberKualitas'));
     }
 
@@ -46,6 +48,7 @@ class KualitasUdaraController extends Controller
     public function update(Request $request, $id)
     {
         $data = KualitasUdara::findorfail($id);
+        $data->id_desa =$request->id_desa;
         $data->id_sumber = $request->id_sumber;
         $data->jumlah_lokasi_pencemaran = $request->jumlah_lokasi_pencemaran;
         $data->politan_pencemaran = $request->politan_pencemaran;

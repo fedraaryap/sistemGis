@@ -32,6 +32,7 @@
           
             <tr>
                 <th>No</th>
+                <th>Desa</th>
                 <th>Jenis Budidaya Ikan</th>
                 <th>Jumlah Budidaya Ikan</th>
                 <th>Jumlah Produksi Ikan</th>
@@ -43,9 +44,11 @@
 
   <tr>
   <td>{{$nomor+1}}</td>
+  <td>{{(!is_null($dat->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
   <td>{{$dat->BudidayaIkan->jenis_budidaya_ikan}}</td>
-  <td>{{$dat->jumlah_budidaya_ikan}}</td>
-  <td>{{$dat->jumlah_produksi_ikan}}</td>
+  <td>{{(!is_null($dat->jumlah_budidaya_ikan)?$dat->jumlah_budidaya_ikan:'-')}}</td>
+  <td>{{(!is_null($dat->jumlah_produksi_ikan)?$dat->jumlah_produksi_ikan:'-')}}</td>
+ 
  
   
   <td>

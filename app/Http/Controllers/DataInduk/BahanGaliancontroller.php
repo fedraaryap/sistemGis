@@ -5,6 +5,8 @@ namespace App\Http\Controllers\DataInduk;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\DataInduk\BahanGalian;
+use App\Model\Referensi\Statuskepemilikan;
+use App\Model\DataInduk\Wilayah;
 
 class BahanGaliancontroller extends Controller
 {
@@ -18,14 +20,16 @@ class BahanGaliancontroller extends Controller
 
     public function create()
     {
-        $kepemilikan = BahanGalian::all();
-        return view('DataInduk.BahanGalian.create',compact('kepemilikan'));
+        $kepemilikan = Statuskepemilikan::all();
+        $desa = Wilayah::all();
+        return view('DataInduk.BahanGalian.create',compact('kepemilikan','desa'));
     }
 
   
     public function store(Request $request)
     {
         $data = new BahanGalian();
+        $data->id_desa = $request->id_desa;
         $data->id_status_kepemilikan = $request->id_status_kepemilikan;
         $data->jenis_galian = $request->jenis_galian;
         $data->deposit_produksi = $request->deposit_produksi;
@@ -37,7 +41,7 @@ class BahanGaliancontroller extends Controller
     public function edit($id)
     {
          $data = BahanGalian::findorfail($id);
-         $kepemilikan = BahanGalian::all();
+         $kepemilikan = Statuskepemilikan::all();
         return view('DataInduk.BahanGalian.edit',compact('data','kepemilikan'));
     }
 

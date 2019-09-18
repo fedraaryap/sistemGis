@@ -1,13 +1,11 @@
 @extends('layouts.dashboard')
 
 @section('content')
+
 <?php
-$Batas = [
-1=>'Batas Utara',2=>'Batas Selatan',3=>'Batas Timur',4=>'Batas Barat'];
 
+$desa = [1=>'Totoharjo',2=>'Hata',3=>'bakauhani',4=>'kelawi',5=>'semanak'];
 ?>
-
-
 
 <div class="content-header">
       <h1>
@@ -31,16 +29,20 @@ $Batas = [
             <!-- form start -->
           <form role="form" method="post" action="{{route('bataswil.simpan')}}">
               {{ csrf_field() }}
-
-
-
               <div class="box-body">
                 <div class="form-group">
+                  <label for="id_desa">Desa</label>
+                  <select class="form-control" name="id_desa">
+                    <option value="" selected disabled></option>
+                  @foreach($desa AS $desa =>$des )
+                    <option value="{{ $desa }}">{{ $des }}</option>
+                  @endforeach
+                </select>
                <label for="id_batas">Batas</label>
                   <select class="form-control" name="id_batas">
                     <option value="" selected></option>
-                  @foreach($Batas AS $Batas =>$bat )
-                    <option value="{{ $Batas }}">{{ $bat }}</option>
+                  @foreach($Batas AS $batas =>$bat )
+                    <option value="{{ $bat->id_batas }}">{{ $bat->batas }}</option>
                   @endforeach
                 </select>
 

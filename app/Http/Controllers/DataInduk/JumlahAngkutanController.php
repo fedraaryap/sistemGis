@@ -5,6 +5,7 @@ namespace App\Http\Controllers\DataInduk;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\DataInduk\JumlahAngkutan;
+use App\Model\Referensi\JenisAngkutan;
 
 class JumlahAngkutanController extends Controller
 {
@@ -12,14 +13,14 @@ class JumlahAngkutanController extends Controller
   
     public function index()
     {
-        $data = JumlahAngkutan::all();
+        $data = JumlahAngkutan::get();
         return view('DataInduk.jumlahangkutan.index',compact('data'));
     }
 
 
     public function create()
     {
-        $JenisAngkutan = JumlahAngkutan::all();
+        $JenisAngkutan = JenisAngkutan::all();
         return view('DataInduk.jumlahangkutan.create',compact('JenisAngkutan'));
     }
 
@@ -27,6 +28,7 @@ class JumlahAngkutanController extends Controller
     public function store(Request $request)
     {
         $data = new JumlahAngkutan;
+        $data->id_desa =$request->id_desa;
         $data->id_jenis_angkutan = $request->id_jenis_angkutan;
         $data->jumlah_pemilik = $request->jumlah_pemilik;
         $data->jumlah_kapasitas = $request->jumlah_kapasitas;
@@ -41,7 +43,7 @@ class JumlahAngkutanController extends Controller
     public function edit($id)
     {
          $data = JumlahAngkutan::findorfail($id);
-         $JenisAngkutan =JumlahAngkutan::all();
+         $JenisAngkutan =JenisAngkutan::all();
         return view('DataInduk.jumlahangkutan.edit',compact('data','JenisAngkutan'));
     }
 
@@ -49,6 +51,7 @@ class JumlahAngkutanController extends Controller
     public function update(Request $request, $id)
     {
         $data = JumlahAngkutan::findorfail($id);
+        $data->id_desa =$request->id_desa;
         $data->id_jenis_angkutan = $request->id_jenis_angkutan;
         $data->jumlah_pemilik = $request->jumlah_pemilik;
         $data->jumlah_kapasitas = $request->jumlah_kapasitas;

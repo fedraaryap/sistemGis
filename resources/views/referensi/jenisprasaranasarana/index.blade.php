@@ -26,12 +26,11 @@
 
                 <div class="row">
                 <div class="col-xs-12">
-        <table id="simple-table" class="table table-striped table-bordered table-hover">
+        <table id="simple-table1" class="table table-striped table-bordered table-hover">
         <thead>
            <a href="{{route('jenprassar.simpan')}}" class=" btn btn-sm btn-primary">Tambah Jenis Prasarana Sarana</a>
             <tr>
                 <th>No</th>
-                <th>Prasarana</th>
                 <th>Jenis Prasarana</th>
                 <th>Aksi</th>
             </tr>
@@ -40,7 +39,7 @@
   @foreach($data as  $nomor=> $dat)
   <tr>
   <td>{{$nomor+1}}</td>
-  <td>{{$dat->jenis_prasarana}}</td>
+  <td>{{$dat->jenis_prasarana_sarana}}</td>
   
   <td>
     <div class="hidden-sm hidden-xs btn-group">

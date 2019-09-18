@@ -16,4 +16,8 @@ class Kebisingan extends Model
 	{
 		return $this->belongsTo('App\Model\Referensi\TingkatKebisingan','id_tingkat_kebisingan','id_tingkat_kebisingan');
 	}
+	public function Desa()
+	{
+		return $this->belongsTo('App\Model\DaftarDesa\ProfilDesa','id_desa','id_desa');
+	}
 }

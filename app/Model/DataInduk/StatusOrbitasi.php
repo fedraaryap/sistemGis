@@ -20,4 +20,8 @@ class StatusOrbitasi extends Model
 	{
 		return $this->belongsTo('App\Model\Referensi\SatuanOrbitasi','id_satuan_orbitasi','id_satuan_orbitasi');
 	}
+	public function Desa()
+	{
+		return $this->belongsTo('App\Model\DaftarDesa\ProfilDesa','id_desa','id_desa');
+	}
 }

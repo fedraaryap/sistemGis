@@ -2,10 +2,9 @@
 
 @section('content')
 <?php
-$JumlahStatus = [
-];
-?>
 
+$desa = [1=>'Totoharjo',2=>'Hata',3=>'bakauhani',4=>'kelawi',5=>'semanak'];
+?>
 
 
 <div class="content-header">
@@ -32,11 +31,20 @@ $JumlahStatus = [
               {{ csrf_field() }}
               <div class="box-body">
                 <div class="form-group">
+                  <label for="id_desa">Desa</label>
+                  <select class="form-control" name="id_desa">
+                    <option value="" selected disabled></option>
+                  @foreach($desa AS $desa =>$des )
+                    <option value="{{ $desa }}">{{ $des }}</option>
+                  @endforeach
+                </select>
+                
+
                <label for="id_status">Kepadatan</label>
                   <select class="form-control" name="id_status">
                     <option value="" selected disabled></option>
-                  @foreach($JumlahStatus AS $JumlahStatus =>$pendi )
-                    <option value="{{ $JumlahStatus }}">{{ $pendi }}</option>
+                  @foreach($JumlahStatus AS $jumlahStatus =>$pen )
+                    <option value="{{ $pen->id_status }}">{{ $pen->status_jumlah }}</option>
                   @endforeach
                 </select>
 

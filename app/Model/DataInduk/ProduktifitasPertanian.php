@@ -15,4 +15,9 @@ class ProduktifitasPertanian extends Model
 	{
 		return $this->belongsTo('App\Model\Referensi\JenisProduktifitas','id_jenis_produktifitas','id_jenis_produktifitas');
 	}
+
+	public function Desa()
+	{
+		return $this->belongsTo('App\Model\DaftarDesa\ProfilDesa','id_desa','id_desa');
+	}
 }

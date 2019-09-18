@@ -26,11 +26,12 @@ class StatusAirController extends Controller
     public function store(Request $request)
     {
         $data = new StatusAir();
+        $data->id_desa =$request->id_desa;
         $data->id_air_bersih = $request->id_air_bersih;
         $data->id_air_panas = $request->id_air_panas;
         $data->pemanfaatan = $request->pemanfaatan;
-        $data->a_air_panas = $request->a_air_panas;
-        $data->a_air_bersih = $request->a_air_bersih;
+        $data->a_airpanas = $request->a_airpanas;
+        $data->a_airbersih = $request->a_airbersih;
         $data->save();
         return redirect()->route('statair');
     }
@@ -48,11 +49,12 @@ class StatusAirController extends Controller
     public function update(Request $request, $id)
     {
         $data = StatusAir::findorfail($id);
+        $data->id_desa =$request->id_desa;
         $data->id_air_bersih = $request->id_air_bersih;
         $data->id_air_panas = $request->id_air_panas;
         $data->pemanfaatan = $request->pemanfaatan;
-        $data->a_air_panas = $request->a_air_panas;
-        $data->a_air_bersih = $request->a_air_bersih;
+        $data->a_airpanas = $request->a_airpanas;
+        $data->a_airbersih = $request->a_airbersih;
         $data->save();
         return redirect()->route('statair');
     }

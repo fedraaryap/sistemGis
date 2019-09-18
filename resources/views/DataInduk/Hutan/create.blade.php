@@ -2,15 +2,16 @@
 
 @section('content')
 <?php
-$Kondisi = [1=>'Hutan Pelindung',2=>'Hutan Lindung',3=>'Hutan Suaka Margasatwa',4=>'Hutan Suaka Alama',5=>'Hutan Konservasi'];
+
 
 $a_kondisi = [0=>'tidak',1=>'iya'];
 
-$Dampak = [1=>'Pencemaran',2=>'Pencemaran Air',3=>' Longsor / Erosi',4=>' Bising',5=>'  Kerusakan Biola / plasma Nutfah Hutan',6=>'Kemusnahan Flora, Faunadan Satwa Langka',7=>'Hilangnya Sumber Mata Air',8=>'Kebakaran Hutan',9=>'Terjadinya Kekeringan / Sulit Air',10=>'Berubahnya Fungsi Hutan',11=>'Terjadinya Lahan Kritis',12=>'  Hilangnya Daerah Tangkapan air',13=>'Musnah Habitan Binatang Hutan'];
 
 $a_dampak = [0=>'tidak',1=>'iya'];
 
 $Status = [0=>'Buruk',1=>'Baik'];
+
+$desa = [1=>'Totoharjo',2=>'Hata',3=>'bakauhani',4=>'kelawi',5=>'semanak'];
 
 ?>
 
@@ -43,11 +44,18 @@ $Status = [0=>'Buruk',1=>'Baik'];
 
               <div class="box-body">
                 <div class="form-group">
-               <label for="id_kondisi">Kondisi Hutan</label>
+                   <label for="id_desa">Desa</label>
+                  <select class="form-control" name="id_desa">
+                    <option value="" selected disabled></option>
+                  @foreach($desa AS $desa =>$des )
+                    <option value="{{ $desa }}">{{ $des }}</option>
+                  @endforeach
+                </select>
+               <label for="id_Kondisi">Kondisi Hutan</label>
                   <select class="form-control" name="id_kondisi">
                     <option value="" selected  ></option>
-                  @foreach($Kondisi AS $Kondisi =>$kon )
-                    <option value="{{ $Kondisi }}">{{ $kon }}</option>
+                  @foreach($kondisiHutan AS $Kondisi =>$kon )
+                    <option value="{{ $kon->id_kondisi }}">{{ $kon->jenis_hutan }}</option>
                   @endforeach
                 </select>
 
@@ -64,13 +72,13 @@ $Status = [0=>'Buruk',1=>'Baik'];
                <label for="id_dampak">Dampak Pengolahan Hutan</label>
                   <select class="form-control" name="id_dampak">
                     <option value="" selected ></option>
-                  @foreach($Dampak AS $Dampak =>$dam )
+                  @foreach($DampakHutan AS $Dampak =>$dam )
                     <option value="{{ $Dampak }}">{{ $dam }}</option>
                   @endforeach
                 </select>
 
            
-               <label for="a_dampak_pengolah">Dampak</label>
+               <label for="a_dampak_pengolahan">Dampak</label>
                   <select class="form-control" name="a_dampak_pengolahan">
                     <option value="" selected disabled></option>
                   @foreach($a_dampak AS $a_dampak =>$adam )

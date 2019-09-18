@@ -14,4 +14,9 @@ class PopulasiTernak extends Model
 	{
 		return $this->belongsTo('App\Model\Referensi\JenisTernak','id_jenis_ternak','id_jenis_ternak');
 	}
+
+	public function Desa()
+	{
+		return $this->belongsTo('App\Model\DaftarDesa\ProfilDesa','id_desa','id_desa');
+	}
 }

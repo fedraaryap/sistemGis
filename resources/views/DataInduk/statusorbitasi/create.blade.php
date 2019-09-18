@@ -2,12 +2,33 @@
 
 @section('content')
 <?php
-$Orbitasi = [
+$Orbitasi = [1  =>'JARAK KE IBU KOTA KECAMATAN',
+2 =>'Lama Jarak Tempuh ke Ibu Kota Kecamatan dengan', 
+3 =>'Kendaraan Bermotor',
+4 =>'Lama Jarak Tempuh ke Ibu Kota Kecamatan dengan ',
+5 =>'Berjalan Kaki atau Kendaraan Non Bermotor',
+6 =>'Kendaraan Umum Ke Ibu Kota Kecamatan',
+7=>' JARAK KE IBU KOTA KABUPATEN/KOTA',
+8=>' Lama Jarak Tempuh ke Ibu Kota Kabupaten/Kota ',
+9 =>'dengan Kendaraan Bermotor',
+10=>'  Lama Jarak Tempuh ke Ibu Kota Kabupaten/Kota ',
+11 =>' dengan Berjalan Kaki atau Kendaraan Non Bermotor',
+12 =>' Kendaraan Umum Ke Ibu Kota Kabupaten/Kota',
+13 =>' JARAK KE IBU KOTA PROVINSI',
+14 =>' Lama Jarak Tempuh ke Ibu Kota Provinsi dengan', 
+15=>'  Kendaraan Bermotor',
+16=>'  Lama Jarak Tempuh ke Ibu Kota Provinsi dengan ',
+17 =>' Berjalan Kaki atau Kendaraan Non Bermotor',
+18=>'  Kendaraan Umum Ke Ibu Kota Provinsi'
 ];
-$SatuanOrbitasi = [
+$SatuanOrbitasi = [2=>'  c',
+3=>' m',
+1 =>'m'
 ];
-$Status = [ 
+$Status = [ 1=>'ada',0=>'tidak ada'
 ];
+
+$desa = [1=>'Totoharjo',2=>'Hata',3=>'bakauhani',4=>'kelawi',5=>'semanak'];
 ?>
 
 
@@ -32,10 +53,18 @@ $Status = [
 
             <!-- /.box-header -->
             <!-- form start -->
-          <form role="form" method="post" action="{{route('produkpert.simpan')}}">
+          <form role="form" method="post" action="{{route('statorbitasi.simpan')}}">
               {{ csrf_field() }}
               <div class="box-body">
                 <div class="form-group">
+                          <label for="id_desa">Desa</label>
+                    <select class="form-control" name="id_desa">
+                      <option value="" selected disabled></option>
+                        @foreach($desa AS $desa =>$des )
+                    <option value="{{ $desa }}">{{ $des }}</option>
+                        @endforeach
+                </select>
+                  
                  <label for="id_orbitasi">Orbitasi</label>
                   <select class="form-control" name="id_orbitasi">
                     <option value="" selected disabled></option>

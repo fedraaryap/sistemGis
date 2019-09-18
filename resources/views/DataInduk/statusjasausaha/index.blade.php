@@ -31,7 +31,8 @@
           <a href="{{route('statjasausaha.simpan')}}" class=" btn btn-sm btn-primary">Tambah Status Jasa Usaha</a>
             
             <tr>
-                <th>no</th>
+                <th>No</th>
+                <th>Desa</th>
                 <th>Jenis Jasa Usaha</th>
                 <th>Jumlah Unit Usaha</th>
                 <th>Jenis Produksi Kegiatan</th>
@@ -46,10 +47,12 @@
 
   <tr>
   <td>{{$nomor+1}}</td>
+  <td>{{(!is_null($dat->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
   <td>{{$dat->JasaUsaha->jasa_usaha}}</td>
-  <td>{{$dat->jumlah_unit_usaha}}</td>
-  <td>{{$dat->jenis_produksi_kegiatan}}</td>
-  <td>{{$dat->tenaga_kerja_usaha}}</td>
+  <td>{{(!is_null($dat->jumlah_unit_usaha)?$dat->jumlah_unit_usaha:'-')}}</td>
+  <td>{{(!is_null($dat->jenis_produksi_kegiatan)?$dat->jenis_produksi_kegiatan:'-')}}</td>
+  <td>{{(!is_null($dat->tenaga_kerja_usaha)?$dat->tenaga_kerja_usaha:'-')}}</td>
+  
   <td>
       <div class="hidden-sm hidden-xs btn-group">
             <a class="btn btn-xs btn-info" href="{{route('statjasausaha.edit',$dat->id_stat_jasa_usaha)}}">

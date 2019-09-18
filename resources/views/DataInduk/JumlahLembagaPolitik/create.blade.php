@@ -1,16 +1,17 @@
 @extends('layouts.dashboard')
 
 @section('content')
-<?php
-$Politik = [
-];
-?>
 
+
+<?php
+$desa = [1=>'Totoharjo',2=>'Hata',3=>'bakauhani',4=>'kelawi',5=>'semanak'];
+
+?>
 
 
 <div class="content-header">
       <h1>
-      Jumlah Angkutan
+      Jumlah Lembaga Politik
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -23,7 +24,7 @@ $Politik = [
         <div class="col-md-12">
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Input/Ubah Jumlah Angkutan</h3>
+              <h3 class="box-title">Input/Ubah Jumlah Lembaga Politik</h3>
             </div>
 
             <!-- /.box-header -->
@@ -32,23 +33,30 @@ $Politik = [
               {{ csrf_field() }}
               <div class="box-body">
                 <div class="form-group">
+                   <label for="id_desa">Desa</label>
+                  <select class="form-control" name="id_desa">
+                    <option value="" selected disabled></option>
+                  @foreach($desa AS $desa =>$des )
+                    <option value="{{ $desa }}">{{ $des }}</option>
+                  @endforeach
+                </select>
                <label for="id_partai">Nama Partai</label>
                   <select class="form-control" name="id_partai">
                     <option value="" selected disabled></option>
-                  @foreach($Politik AS $Politik =>$pol )
-                    <option value="{{ $Politik }}">{{ $pol }}</option>
+                  @foreach($Partai AS $politik =>$pol )
+                    <option value="{{ $pol->id_partai}}">{{ $pol->nama_partai }}</option>
                   @endforeach
                 </select>
 
 
                   <label for="pengurus">Pengurus</label>
-                  <input type="text" class="form-control" name="pengurus" id="pengurus" placeholder="masukan data">
+                  <input type="number" class="form-control" name="pengurus" id="pengurus" placeholder="masukan data">
 
                    <label for="anggota">Anggota</label>
-                  <input type="text" class="form-control" name="anggota" id="anggota" placeholder="masukan data">
+                  <input type="number" class="form-control" name="anggota" id="anggota" placeholder="masukan data">
 
-                   <label for="jumlah_unit_angkutan">Pemilu terakhir</label>
-                  <input type="text" class="form-control" name="jumlah_unit_angkutan" id="jumlah_unit_angkutan" placeholder="masukan data">
+                   <label for="pemilu_terakhir">Pemilu terakhir</label>
+                  <input type="number" class="form-control" name="pemilu_terakhir" id="jumlah_unit_angkutan" placeholder="masukan data">
 
                  
           </form>

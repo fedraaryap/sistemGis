@@ -1,9 +1,6 @@
 @extends('layouts.dashboard')
 @section('content')
-<?php
-$Kepemilikan = [
-1=>'Pemerintah',2=>'Swasta',3=>'Perorangan'];
-?>
+
 
 <div class="content-header">
       <h1>
@@ -30,10 +27,10 @@ $Kepemilikan = [
                  <div class="box-body">
                 <div class="form-group">
                <label for="id_status_kepemilikan">Status Kepemilikan</label>
-                  <select class="form-control" name="id_status_kepemilikan" value="">
-                     <option value="" selected disabled></option>
-                  @foreach($Kepemilikan AS $Kepemilikan =>$kep )
-                    <option value="{{ $Kepemilikan }}">{{ $kep }}</option>
+                  <select class="form-control" name="id_status_kepemilikan">
+                    <option value="" selected disabled></option>
+                  @foreach($kepemilikan AS $kepe =>$kep )
+                    <option value="{{ $kep->id_status_kepemilikan }}">{{ $kep->kepemilikan }}</option>
                   @endforeach
                 </select>
 

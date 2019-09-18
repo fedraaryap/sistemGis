@@ -32,6 +32,7 @@
           
             <tr>
                 <th>No</th>
+                <th>Desa</th>
                 <th>Nama Partai</th>
                 <th>Alamat Partai</th>
                 <th>Jenis Kegiatan</th>
@@ -47,6 +48,7 @@
 
   <tr>
   <td>{{$nomor+1}}</td>
+   <td>{{(!is_null($dat->id_desa)?$dat->Desa->Wilayah->nama_wil:'-')}}</td>
   <td>{{$dat->Partai->nama_partai}}</td>
   <td>{{$dat->Partai->alamat_sekret}}</td>
   <td>{{$dat->Partai->jenis_kegiatan}}</td>

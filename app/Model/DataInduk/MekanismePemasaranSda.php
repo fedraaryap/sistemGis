@@ -11,4 +11,9 @@ class MekanismePemasaranSda extends Model
 
 	public $timestamps =false;
 
+	public function Desa()
+	{
+		return $this->belongsTo('App\Model\DaftarDesa\ProfilDesa','id_desa','id_desa');
+	}
+
 }

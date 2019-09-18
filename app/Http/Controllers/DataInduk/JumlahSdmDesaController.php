@@ -5,20 +5,21 @@ namespace App\Http\Controllers\DataInduk;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\DataInduk\JumlahSdmDesa;
+use App\Model\Referensi\SdmDesa;
 
 class JumlahSdmDesaController extends Controller
 {
    
     public function index()
     {
-        $data = JumlahSdmDesa::all();
+        $data = JumlahSdmDesa::get();
         return view('DataInduk.jumlahsdmdesa.index',compact('data'));
     }
 
 
     public function create()
     {
-        $SdmDesa = JumlahSdmDesa::all();
+        $SdmDesa = SdmDesa::all();
         $JenisKelamin = JumlahSdmDesa::all();
         return view('DataInduk.jumlahsdmdesa.create',compact('SdmDesa','JenisKelamin'));
     }
@@ -27,6 +28,7 @@ class JumlahSdmDesaController extends Controller
     public function store(Request $request)
     {
         $data = new JumlahSdmDesa;
+        $data->id_desa =$request->id_desa;
         $data->id_sdm_desa = $request->id_sdm_desa;
         $data->jumlah_sdm = $request->jumlah_sdm;
         $data->jk_sdm = $request->jk_sdm;
@@ -38,7 +40,7 @@ class JumlahSdmDesaController extends Controller
     public function edit($id)
     {
          $data = JumlahSdmDesa::findorfail($id);
-         $SdmDesa =JumlahSdmDesa::all();
+         $SdmDesa =SdmDesa::all();
          $JenisKelamin = JumlahSdmDesa::all();
         return view('DataInduk.jumlahsdmdesa.edit',compact('data','SdmDesa','JenisKelamin'));
     }
@@ -47,6 +49,7 @@ class JumlahSdmDesaController extends Controller
     public function update(Request $request, $id)
     {
         $data = JumlahSdmDesa::findorfail($id);
+        $data->id_desa =$request->id_desa;
         $data->id_sdm_desa = $request->id_sdm_desa;
         $data->jumlah_sdm = $request->jumlah_sdm;
         $data->jk_sdm = $request->jk_sdm;

@@ -34,6 +34,7 @@
                 <th>No</th>
                 <th>waktu Mulai</th>
                 <th>waktu Akhir</th>
+                <th>Tahun Aktif</th>
                 <th>aksi</th>
             </tr>
         </thead>
@@ -44,7 +45,12 @@
   <td>{{$nomor+1}}</td>
   <td>{{$dat->waktu_mulai}}</td>
   <td>{{$dat->waktu_akhir}}</td>
-  <td>{{$dat->aktif}}</td>
+   @if($dat->aktif == 1)
+    <td>aktif</td>
+  @elseif($dat->aktif == 0)
+    <td>Tidak aktif</td>
+  @endif()
+  
 
   
   <td>

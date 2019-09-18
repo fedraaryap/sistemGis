@@ -5,6 +5,7 @@ namespace App\Http\Controllers\DataInduk;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\DataInduk\ProduktifitasPertanian;
+use App\Model\Referensi\JenisProduktifitas;
 
 class ProduktifitasPertanianController extends Controller
 {
@@ -17,7 +18,7 @@ class ProduktifitasPertanianController extends Controller
 
     public function create()
     {
-        $Produktifitas = ProduktifitasPertanian::all();
+        $Produktifitas = JenisProduktifitas::all();
         return view('DataInduk.ProduktifitasPertanian.create',compact('Produktifitas'));
     }
 
@@ -25,6 +26,7 @@ class ProduktifitasPertanianController extends Controller
     public function store(Request $request)
     {
         $data = new ProduktifitasPertanian;
+        $data->id_desa =$request->id_desa;
         $data->id_jenis_produktifitas = $request->id_jenis_produktifitas;
         $data->luas = $request->luas;
         $data->hasil = $request->hasil;
@@ -38,7 +40,7 @@ class ProduktifitasPertanianController extends Controller
     public function edit($id)
     {
          $data = ProduktifitasPertanian::findorfail($id);
-         $Produktifitas = ProduktifitasPertanian::all();
+         $Produktifitas = JenisProduktifitas::all();
         return view('DataInduk.ProduktifitasPertanian.edit',compact('data','Produktifitas'));
     }
 
@@ -46,6 +48,7 @@ class ProduktifitasPertanianController extends Controller
     public function update(Request $request, $id)
     {
         $data = ProduktifitasPertanian::findorfail($id);
+        $data->id_desa =$request->id_desa;
         $data->id_jenis_produktifitas = $request->id_jenis_produktifitas;
         $data->luas = $request->luas;
         $data->hasil = $request->hasil;
